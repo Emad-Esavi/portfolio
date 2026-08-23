@@ -21,7 +21,7 @@ from .models import (
     Service,
     Skill,
 )
-from .emails import send_contact_notification
+from .tasks import send_contact_notification_task
 from .utils import get_client_ip
 
 
@@ -211,7 +211,7 @@ def contact_submit(request):
             phone=form.cleaned_data["phone"],
             ip_address=get_client_ip(request),
         )
-        send_contact_notification(contact_message)
+        send_contact_notification_task.delay(contact_message.pk)
 
         if request.htmx:
             return render(
