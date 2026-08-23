@@ -1,0 +1,36 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: noir --default, ivory --preferslight;
+}
+
+/**
+ * Scan Django templates, Python, and JS for Tailwind class names.
+ */
+@source "../../../**/*.{html,py,js}";
+@source "../../../../templates/**/*.{html,js}";
+
+/* Themes must load before utilities that reference theme tokens */
+@import "./themes/daisyui-themes.css";
+
+/* Base */
+@import "./base/tokens.css";
+@import "./base/fonts.css";
+@import "./base/reset.css";
+@import "./base/typography.css";
+
+/* Utilities */
+@import "./utilities/shadows.css";
+@import "./utilities/gradients.css";
+@import "./utilities/glass.css";
+@import "./utilities/backgrounds.css";
+@import "./utilities/animations.css";
+
+/* Components */
+@import "./components/buttons.css";
+@import "./components/cards.css";
+@import "./components/badges.css";
+@import "./components/forms.css";
+@import "./components/navigation.css";
+@import "./components/misc.css";
+@import "./components/pages.css";
+@import "./components/blog.css";

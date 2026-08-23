@@ -1,0 +1,176 @@
+/* Animation language — subtle, GPU-friendly, reduced-motion safe */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-left {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-right {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes ripple-expand {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Scroll reveal — starts hidden, .is-visible triggers enter.
+   Stagger delays apply ONLY until [data-revealed] is set (see reveal.js),
+   so they never leak into hover transitions. */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--duration-slow) var(--ease-out-soft),
+    transform var(--duration-slow) var(--ease-out-soft);
+  will-change: opacity, transform;
+}
+
+[data-reveal="left"] {
+  transform: translateX(24px);
+}
+
+[data-reveal="right"] {
+  transform: translateX(-24px);
+}
+
+[data-reveal="scale"] {
+  transform: scale(0.96);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0) translateX(0) scale(1);
+}
+
+[data-reveal][data-delay="1"]:not([data-revealed]) { transition-delay: 80ms; }
+[data-reveal][data-delay="2"]:not([data-revealed]) { transition-delay: 160ms; }
+[data-reveal][data-delay="3"]:not([data-revealed]) { transition-delay: 240ms; }
+[data-reveal][data-delay="4"]:not([data-revealed]) { transition-delay: 320ms; }
+[data-reveal][data-delay="5"]:not([data-revealed]) { transition-delay: 400ms; }
+
+[data-reveal][data-revealed] {
+  transition-delay: 0s;
+  will-change: auto;
+}
+
+.animate-fade-up {
+  animation: fade-up var(--duration-slow) var(--ease-out-soft) both;
+}
+
+.animate-fade-left {
+  animation: fade-left var(--duration-slow) var(--ease-out-soft) both;
+}
+
+.animate-fade-right {
+  animation: fade-right var(--duration-slow) var(--ease-out-soft) both;
+}
+
+.animate-scale {
+  animation: scale-in var(--duration-slow) var(--ease-out-soft) both;
+}
+
+/* Shared hover motion — one transition so utilities don't override each other */
+.hover-lift,
+.glow-on-hover,
+.tilt-on-hover {
+  transition:
+    transform var(--duration-base) var(--ease-out-soft),
+    box-shadow var(--duration-base) var(--ease-out-soft),
+    border-color var(--duration-base) ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-6px);
+}
+
+.tilt-on-hover {
+  transform-style: preserve-3d;
+}
+
+.tilt-on-hover:hover {
+  transform: perspective(800px) rotateX(2deg) rotateY(-3deg) translateY(-4px);
+}
+
+.glow-on-hover:hover {
+  box-shadow:
+    0 8px 24px rgb(0 0 0 / 0.12),
+    0 0 28px color-mix(in oklab, var(--color-primary) 18%, transparent);
+}
+
+/* Button ripple host */
+.btn-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ripple .ripple-wave {
+  position: absolute;
+  border-radius: 9999px;
+  background: rgb(255 255 255 / 0.35);
+  transform: scale(0);
+  animation: ripple-expand 600ms ease-out forwards;
+  pointer-events: none;
+  width: 20px;
+  height: 20px;
+  margin-left: -10px;
+  margin-top: -10px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .hover-lift:hover,
+  .tilt-on-hover:hover {
+    transform: none;
+  }
+
+  .animate-fade-up,
+  .animate-fade-left,
+  .animate-fade-right,
+  .animate-scale {
+    animation: none;
+  }
+}

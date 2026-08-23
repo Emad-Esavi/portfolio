@@ -1,0 +1,41 @@
+/* Design tokens — single source of truth for the cinematic system.
+   DaisyUI themes (noir / ivory) map these into semantic color roles.
+   Tailwind utilities are generated from @theme. */
+
+@theme {
+  /* Brand accents (restrained — use sparingly) */
+  --color-primary: #4CC9FF;
+  --color-secondary: #FF4FD8;
+  --color-accent: #8B5CF6;
+  --color-success: #39D98A;
+  --color-warning: #FACC15;
+  --color-error: #F43F5E;
+
+  /* Dark (noir) surfaces — mirrored in daisyui theme */
+  --color-noir-bg: #09090B;
+  --color-noir-surface: #101014;
+  --color-noir-card: #17171F;
+  --color-noir-border: #292933;
+  --color-noir-text: #F3F3F7;
+  --color-noir-muted: #9D9DAA;
+
+  /* Light (ivory) surfaces */
+  --color-ivory-bg: #F5F4F8;
+  --color-ivory-surface: #FFFFFF;
+  --color-ivory-secondary: #ECEAF3;
+  --color-ivory-text: #1F1F28;
+  --color-ivory-muted: #6E6B7B;
+  --color-ivory-primary: #6D5EF7;
+
+  /* Radius scale */
+  --radius-field: 1rem;      /* 16px — buttons, inputs */
+  --radius-box: 1.5rem;      /* 24px — cards */
+  --radius-image: 1.75rem;   /* 28px — images / portraits */
+  --radius-pill: 9999px;
+
+  /* Motion */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 400ms;
+}

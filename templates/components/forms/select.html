@@ -1,0 +1,17 @@
+{# Expected: name, id, label, options_html OR options (not used — pass options_html), required, class, hint #}
+<div class="form-field {{ class|default:'' }}">
+  {% if label %}
+  <label class="form-label" {% if id %}for="{{ id }}"{% endif %}>{{ label }}{% if required %} <span class="text-error">*</span>{% endif %}</label>
+  {% endif %}
+  <select
+    name="{{ name }}"
+    {% if id %}id="{{ id }}"{% endif %}
+    class="select-premium"
+    {% if required %}required{% endif %}
+  >
+    {{ options_html|safe }}
+  </select>
+  {% if hint %}
+  <p class="form-hint">{{ hint }}</p>
+  {% endif %}
+</div>

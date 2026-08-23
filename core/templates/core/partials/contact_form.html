@@ -1,0 +1,87 @@
+{% load i18n %}
+<form
+  id="contact-form-{{ variant }}"
+  method="post"
+  action="{% url 'contact_submit' %}"
+  class="space-y-5"
+  hx-post="{% url 'contact_submit' %}"
+  hx-target="this"
+  hx-swap="outerHTML"
+  hx-disabled-elt="find button[type=submit]"
+>
+  {% csrf_token %}
+  <input type="hidden" name="variant" value="{{ variant }}">
+  {# Honeypot — visually hidden from users #}
+  <div class="absolute -left-[9999px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+    <label for="contact-{{ variant }}-website">{% trans "Website" %}</label>
+    <input
+      type="text"
+      name="website"
+      id="contact-{{ variant }}-website"
+      tabindex="-1"
+      autocomplete="off"
+      value="{% if form %}{{ form.website.value|default:'' }}{% endif %}"
+    >
+  </div>
+
+  {% if form_error %}
+  <div class="form-alert form-alert--error" role="alert">
+    {{ form_error }}
+  </div>
+  {% elif form and form.non_field_errors %}
+  <div class="form-alert form-alert--error" role="alert">
+    {{ form.non_field_errors|join:", " }}
+  </div>
+  {% endif %}
+
+  {% if variant == "page" %}
+  <div class="grid gap-5 sm:grid-cols-2">
+    {% trans "Full Name" as label_name %}
+    {% trans "John Doe" as ph_name %}
+    {% include "components/forms/input.html" with name="name" id="contact-page-name" label=label_name placeholder=ph_name required=True autocomplete="name" value=form.name.value errors=form.name.errors %}
+
+    {% trans "Email Address" as label_email %}
+    {% include "components/forms/input.html" with name="email" id="contact-page-email" label=label_email type="email" placeholder="john@example.com" required=True autocomplete="email" value=form.email.value errors=form.email.errors %}
+  </div>
+
+  <div class="grid gap-5 sm:grid-cols-2">
+    {% trans "Company" as label_company %}
+    {% trans "Acme Inc. (optional)" as ph_company %}
+    {% include "components/forms/input.html" with name="company" id="contact-page-company" label=label_company placeholder=ph_company autocomplete="organization" value=form.company.value errors=form.company.errors %}
+
+    {% trans "Phone" as label_phone %}
+    {% trans "+1 555 000 0000 (optional)" as ph_phone %}
+    {% include "components/forms/input.html" with name="phone" id="contact-page-phone" label=label_phone type="tel" placeholder=ph_phone autocomplete="tel" value=form.phone.value errors=form.phone.errors %}
+  </div>
+
+  {% trans "Subject" as label_subject %}
+  {% trans "Project Inquiry" as ph_subject %}
+  {% include "components/forms/input.html" with name="subject" id="contact-page-subject" label=label_subject placeholder=ph_subject value=form.subject.value errors=form.subject.errors %}
+
+  {% trans "Message" as label_message %}
+  {% trans "Tell me about your project..." as ph_message %}
+  {% include "components/forms/textarea.html" with name="message" id="contact-page-message" label=label_message placeholder=ph_message required=True rows=7 value=form.message.value errors=form.message.errors %}
+  {% else %}
+  {% trans "Full Name" as label_name %}
+  {% trans "John Doe" as ph_name %}
+  {% include "components/forms/input.html" with name="name" id="contact-name" label=label_name placeholder=ph_name required=True autocomplete="name" value=form.name.value errors=form.name.errors %}
+
+  {% trans "Email Address" as label_email %}
+  {% include "components/forms/input.html" with name="email" id="contact-email" label=label_email type="email" placeholder="john@example.com" required=True autocomplete="email" value=form.email.value errors=form.email.errors %}
+
+  {% trans "Subject" as label_subject %}
+  {% trans "Project Inquiry" as ph_subject %}
+  {% include "components/forms/input.html" with name="subject" id="contact-subject" label=label_subject placeholder=ph_subject value=form.subject.value errors=form.subject.errors %}
+
+  {% trans "Message" as label_message %}
+  {% trans "Tell me about your project..." as ph_message %}
+  {% include "components/forms/textarea.html" with name="message" id="contact-message" label=label_message placeholder=ph_message required=True rows=6 value=form.message.value errors=form.message.errors %}
+  {% endif %}
+
+  <div class="pt-2">
+    <button type="submit" class="btn btn-primary btn-block btn-ripple">
+      {% trans "Send Message" %}
+      {% include "components/ui/icon.html" with name="arrow-right" size="sm" %}
+    </button>
+  </div>
+</form>

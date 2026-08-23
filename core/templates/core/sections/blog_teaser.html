@@ -1,0 +1,28 @@
+{% load i18n %}
+
+{% if latest_posts %}
+<section id="blog" class="section">
+    <div class="section-container">
+        <div class="section-header section-header--center mb-12" data-reveal>
+            <p class="text-eyebrow">{% trans "Writing" %}</p>
+            <h2 class="section-title text-balance">{% trans "Latest from the Blog" %}</h2>
+            <p class="section-subtitle">
+                {% trans "Recent articles and notes on backend development, APIs, and building reliable systems." %}
+            </p>
+        </div>
+
+        <div class="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+            {% for post in latest_posts %}
+                {% include "blog/partials/post_card.html" with post=post %}
+            {% endfor %}
+        </div>
+
+        <div class="mt-12 flex justify-center" data-reveal>
+            <a href="{% url 'blog:post_list' %}" class="btn btn-outline btn-ripple">
+                {% trans "View All Posts" %}
+                {% include "components/ui/icon.html" with name="arrow-right" size="sm" %}
+            </a>
+        </div>
+    </div>
+</section>
+{% endif %}

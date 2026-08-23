@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Services" %}{% endblock %}
+
+{% block meta_description %}
+{% trans "Backend development, REST APIs, and database design services for reliable, scalable web applications." %}
+{% endblock %}
+
+{% block content %}
+{% trans "What I Offer" as ph_eyebrow %}
+{% trans "Services" as ph_title %}
+{% trans "Helping businesses build reliable, scalable, and high-performance web applications." as ph_subtitle %}
+{% include "components/layout/page_header.html" with eyebrow=ph_eyebrow title=ph_title subtitle=ph_subtitle crumb_label=ph_title align="center" %}
+
+<section class="section pt-0">
+    <div class="section-container">
+        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <article class="card-premium hover-lift glow-on-hover p-7" data-reveal data-delay="1">
+                <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-(--radius-field) border border-primary/25 bg-primary/10 text-primary">
+                    {% include "components/ui/icon.html" with name="arrow-right" %}
+                </div>
+                <h3 class="text-h3 mb-3">{% trans "Backend Development" %}</h3>
+                <p class="text-body text-muted">
+                    {% trans "Designing secure, scalable, and maintainable backend systems using Django and modern development practices." %}
+                </p>
+            </article>
+            <article class="card-premium hover-lift glow-on-hover p-7" data-reveal data-delay="2">
+                <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-(--radius-field) border border-secondary/25 bg-secondary/10 text-secondary">
+                    {% include "components/ui/icon.html" with name="check" %}
+                </div>
+                <h3 class="text-h3 mb-3">{% trans "REST API Development" %}</h3>
+                <p class="text-body text-muted">
+                    {% trans "Building fast, secure, and well-documented APIs for web applications, mobile apps, and third-party integrations." %}
+                </p>
+            </article>
+            <article class="card-premium hover-lift glow-on-hover p-7 {% if not services %}md:col-span-2 xl:col-span-1{% endif %}" data-reveal data-delay="3">
+                <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-(--radius-field) border border-accent/25 bg-accent/10 text-accent">
+                    {% include "components/ui/icon.html" with name="external" %}
+                </div>
+                <h3 class="text-h3 mb-3">{% trans "Database Design" %}</h3>
+                <p class="text-body text-muted">
+                    {% trans "Creating efficient database schemas, optimizing queries, and ensuring data integrity for long-term scalability." %}
+                </p>
+            </article>
+
+            {% for service in services %}
+            <article class="card-premium hover-lift glow-on-hover p-7" data-reveal data-delay="{{ forloop.counter|add:3 }}">
+                <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-(--radius-field) border border-primary/25 bg-primary/10 text-primary">
+                    {% include "components/ui/icon.html" with name=service.icon|default:"check" %}
+                </div>
+                <h3 class="text-h3 mb-3">{{ service.title }}</h3>
+                <p class="text-body text-muted">
+                    {{ service.short_description }}
+                </p>
+                {% if service.description %}
+                <p class="mt-4 text-sm text-muted">{{ service.description }}</p>
+                {% endif %}
+                {% if service.skills.all %}
+                <div class="mt-5 flex flex-wrap gap-2">
+                    {% for skill in service.skills.all %}
+                    <span class="badge-soft">{{ skill.name }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="section-container">
+        <div class="section-header section-header--center" data-reveal>
+            <p class="text-eyebrow">{% trans "Process" %}</p>
+            <h2 class="section-title text-balance">{% trans "How I Work" %}</h2>
+            <p class="section-subtitle">
+                {% trans "A clear, collaborative process from discovery to delivery." %}
+            </p>
+        </div>
+
+        <div class="process-steps mt-12">
+            <article class="process-step" data-reveal data-delay="1">
+                <p class="process-step__number">01</p>
+                <h3 class="text-h3 mb-2">{% trans "Discover" %}</h3>
+                <p class="text-body text-muted">
+                    {% trans "Understand goals, constraints, and success metrics for your product or API." %}
+                </p>
+            </article>
+            <article class="process-step" data-reveal data-delay="2">
+                <p class="process-step__number">02</p>
+                <h3 class="text-h3 mb-2">{% trans "Design" %}</h3>
+                <p class="text-body text-muted">
+                    {% trans "Shape architecture, data models, and interfaces that stay maintainable as you grow." %}
+                </p>
+            </article>
+            <article class="process-step" data-reveal data-delay="3">
+                <p class="process-step__number">03</p>
+                <h3 class="text-h3 mb-2">{% trans "Build" %}</h3>
+                <p class="text-body text-muted">
+                    {% trans "Implement with clean code, tests, and iterative feedback so quality stays high." %}
+                </p>
+            </article>
+            <article class="process-step" data-reveal data-delay="4">
+                <p class="process-step__number">04</p>
+                <h3 class="text-h3 mb-2">{% trans "Deliver" %}</h3>
+                <p class="text-body text-muted">
+                    {% trans "Ship, document, and hand over systems that are ready for production and future work." %}
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section pt-0">
+    <div class="section-container">
+        <div class="glass-card shadow-soft mx-auto max-w-3xl p-8 text-center md:p-12" data-reveal>
+            <p class="text-eyebrow mb-4">{% trans "Ready to start?" %}</p>
+            <h2 class="text-h2 mb-4">{% trans "Let's build something solid" %}</h2>
+            <p class="text-body text-muted mb-8">
+                {% trans "Tell me about your project and I'll help you choose the right approach for backend, APIs, or data." %}
+            </p>
+            <a href="{% url 'contact' %}" class="btn btn-primary btn-ripple">
+                {% trans "Contact Me" %}
+                {% include "components/ui/icon.html" with name="arrow-right" size="sm" %}
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

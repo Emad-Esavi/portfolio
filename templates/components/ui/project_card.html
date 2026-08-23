@@ -1,0 +1,53 @@
+{% load i18n %}
+<article class="card-premium tilt-on-hover glow-on-hover {{ class|default:'' }}" data-reveal>
+  <div class="p-3 pb-0">
+    <div class="card-image relative aspect-16/10">
+      {% if image_url %}
+      <img src="{{ image_url }}" alt="{{ image_alt|default:title }}" loading="lazy">
+      {% else %}
+      <div class="flex h-full w-full items-center justify-center bg-base-200 opacity-40 gradient-blue-purple"></div>
+      {% endif %}
+      {% if featured %}
+      <div class="absolute top-3 end-3">
+        <span class="badge-soft badge-soft--primary">{% trans "Featured" %}</span>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="p-6">
+    <h3 class="text-h3 mb-2">
+      {% if href %}<a href="{{ href }}" class="transition-colors hover:text-primary">{{ title }}</a>{% else %}{{ title }}{% endif %}
+    </h3>
+    {% if description %}
+    <p class="mb-4 text-body text-muted">{{ description }}</p>
+    {% endif %}
+
+    {% if tags_html %}
+    <div class="project-card__meta mb-5">
+      {{ tags_html|safe }}
+    </div>
+    {% elif skills %}
+    <div class="project-card__meta mb-5">
+      {% for skill in skills %}
+        <span class="badge-soft">{{ skill.name }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="flex flex-wrap gap-2">
+      {% if github_url %}
+      <a href="{{ github_url }}" class="btn btn-outline btn-sm btn-ripple" target="_blank" rel="noopener noreferrer">
+        {% include "components/ui/icon.html" with name="github" size="sm" %}
+        GitHub
+      </a>
+      {% endif %}
+      {% if live_url %}
+      <a href="{{ live_url }}" class="btn btn-primary btn-sm btn-ripple" target="_blank" rel="noopener noreferrer">
+        {% trans "Live Demo" %}
+        {% include "components/ui/icon.html" with name="external" size="sm" %}
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</article>

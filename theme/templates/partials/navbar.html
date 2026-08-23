@@ -1,0 +1,34 @@
+{% load i18n %}
+
+<div x-data="{ mobileOpen: false }">
+    <header class="site-nav glass-nav">
+        <div class="site-nav__inner">
+            <div class="flex items-center gap-3">
+                <button
+                    type="button"
+                    class="icon-btn lg:hidden"
+                    @click="mobileOpen = true"
+                    aria-label="{% trans 'Open navigation menu' %}"
+                    :aria-expanded="mobileOpen.toString()"
+                >
+                    {% include "components/ui/icon.html" with name="menu" %}
+                </button>
+
+                <a href="{% url 'home' %}" class="site-nav__brand">
+                    Portfolio
+                </a>
+            </div>
+
+            <ul class="site-nav__links">
+                {% include "partials/nav_links.html" %}
+            </ul>
+
+            <div class="site-nav__actions">
+                {% include "partials/theme_switcher.html" %}
+                {% include "partials/language_switcher.html" %}
+            </div>
+        </div>
+    </header>
+
+    {% include "partials/mobile_menu.html" %}
+</div>

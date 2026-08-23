@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{ project.title }}{% endblock %}
+
+{% block meta_description %}{{ project.short_description }}{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <div class="section-container">
+        <nav aria-label="{% trans 'Breadcrumb' %}">
+            <ol class="page-hero__breadcrumb">
+                <li><a href="{% url 'home' %}">{% trans "Home" %}</a></li>
+                <li class="page-hero__breadcrumb-sep" aria-hidden="true">/</li>
+                <li><a href="{% url 'projects' %}">{% trans "Projects" %}</a></li>
+                <li class="page-hero__breadcrumb-sep" aria-hidden="true">/</li>
+                <li class="page-hero__breadcrumb-current" aria-current="page">{{ project.title }}</li>
+            </ol>
+        </nav>
+
+        <div class="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
+            <div data-reveal="right">
+                <div class="mb-5 flex flex-wrap items-center gap-2">
+                    {% if project.is_featured %}
+                    <span class="badge-soft badge-soft--primary">{% trans "Featured" %}</span>
+                    {% endif %}
+                    <span class="badge-soft">{{ project.get_status_display }}</span>
+                    {% if project.completed_on %}
+                    <span class="badge-soft font-mono">{{ project.completed_on|date:"M Y" }}</span>
+                    {% endif %}
+                </div>
+
+                <h1 class="text-display-2 text-balance">{{ project.title }}</h1>
+                <p class="mt-5 text-body-lg text-muted">{{ project.short_description }}</p>
+
+                {% if project.skills.all %}
+                <div class="mt-6 flex flex-wrap gap-2">
+                    {% for skill in project.skills.all %}
+                        {% include "components/ui/skill_tag.html" with text=skill.name %}
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <div class="mt-8 flex flex-wrap gap-3">
+                    {% if project.github_url %}
+                    <a href="{{ project.github_url }}" class="btn btn-outline btn-ripple" target="_blank" rel="noopener noreferrer">
+                        {% include "components/ui/icon.html" with name="github" size="sm" %}
+                        GitHub
+                    </a>
+                    {% endif %}
+                    {% if project.live_url %}
+                    <a href="{{ project.live_url }}" class="btn btn-primary btn-ripple" target="_blank" rel="noopener noreferrer">
+                        {% trans "Live Demo" %}
+                        {% include "components/ui/icon.html" with name="external" size="sm" %}
+                    </a>
+                    {% endif %}
+                    <a href="{% url 'contact' %}" class="btn btn-glass btn-ripple">
+                        {% trans "Discuss a Similar Project" %}
+                    </a>
+                </div>
+            </div>
+
+            <div data-reveal="left" data-delay="2">
+                <div class="card-image relative aspect-16/10 overflow-hidden rounded-image border border-base-content/10">
+                    {% if project.thumbnail %}
+                    <img src="{{ project.thumbnail.url }}" alt="{{ project.title }}" class="h-full w-full object-cover" loading="eager">
+                    {% else %}
+                    <div class="flex h-full w-full items-center justify-center gradient-blue-purple opacity-40"></div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section pt-0">
+    <div class="section-container">
+        <div class="mx-auto max-w-3xl" data-reveal>
+            <h2 class="text-h2 mb-5">{% trans "Overview" %}</h2>
+            <div class="text-body-lg text-muted leading-relaxed whitespace-pre-line">{{ project.description }}</div>
+        </div>
+
+        {% if project.images.all %}
+        <div class="mt-16" x-data="{ open: false, src: '', alt: '' }">
+            <div class="section-header section-header--center mb-10" data-reveal>
+                <p class="text-eyebrow">{% trans "Gallery" %}</p>
+                <h2 class="section-title text-balance">{% trans "Project Screenshots" %}</h2>
+            </div>
+
+            <div class="project-gallery">
+                {% for image in project.images.all %}
+                <button
+                    type="button"
+                    class="project-gallery__item"
+                    data-reveal
+                    data-delay="{{ forloop.counter }}"
+                    @click="open = true; src = '{{ image.image.url }}'; alt = '{{ image.caption|default:project.title|escapejs }}'"
+                    aria-label="{% if image.caption %}{{ image.caption }}{% else %}{% blocktrans with n=forloop.counter %}View screenshot {{ n }}{% endblocktrans %}{% endif %}"
+                >
+                    <img src="{{ image.image.url }}" alt="{{ image.caption|default:project.title }}" loading="lazy">
+                </button>
+                {% endfor %}
+            </div>
+
+            <div
+                x-show="open"
+                x-cloak
+                x-transition.opacity
+                class="gallery-lightbox"
+                @keydown.escape.window="open = false"
+                @click.self="open = false"
+                role="dialog"
+                aria-modal="true"
+                aria-label="{% trans 'Image preview' %}"
+            >
+                <button
+                    type="button"
+                    class="icon-btn absolute top-6 end-6"
+                    @click="open = false"
+                    aria-label="{% trans 'Close' %}"
+                >
+                    {% include "components/ui/icon.html" with name="close" %}
+                </button>
+                <img :src="src" :alt="alt" class="gallery-lightbox__img">
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+{% if related_projects %}
+<section class="section">
+    <div class="section-container">
+        <div class="section-header section-header--center mb-12" data-reveal>
+            <p class="text-eyebrow">{% trans "More Work" %}</p>
+            <h2 class="section-title text-balance">{% trans "Related Projects" %}</h2>
+        </div>
+
+        <div class="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+            {% for related in related_projects %}
+                {% url 'project_detail' related.slug as related_url %}
+                {% if related.thumbnail %}
+                    {% include "components/ui/project_card.html" with title=related.title description=related.short_description image_url=related.thumbnail.url featured=related.is_featured skills=related.skills.all github_url=related.github_url live_url=related.live_url href=related_url %}
+                {% else %}
+                    {% include "components/ui/project_card.html" with title=related.title description=related.short_description featured=related.is_featured skills=related.skills.all github_url=related.github_url live_url=related.live_url href=related_url %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<section class="section pt-0">
+    <div class="section-container">
+        <div class="glass-card shadow-soft mx-auto max-w-3xl p-8 text-center md:p-12" data-reveal>
+            <p class="text-eyebrow mb-4">{% trans "Next Step" %}</p>
+            <h2 class="text-h2 mb-4">{% trans "Have a similar idea?" %}</h2>
+            <p class="text-body text-muted mb-8">
+                {% trans "Let's talk about how we can build something reliable, scalable, and thoughtfully designed." %}
+            </p>
+            <a href="{% url 'contact' %}" class="btn btn-primary btn-ripple">
+                {% trans "Get in Touch" %}
+                {% include "components/ui/icon.html" with name="arrow-right" size="sm" %}
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

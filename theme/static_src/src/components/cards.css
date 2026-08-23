@@ -1,0 +1,184 @@
+/* Card system */
+
+.card-surface {
+  background: var(--color-base-300);
+  border: 1px solid color-mix(in oklab, var(--color-base-content) 8%, transparent);
+  border-radius: var(--radius-box);
+  box-shadow:
+    0 1px 2px rgb(0 0 0 / 0.04),
+    0 4px 16px rgb(0 0 0 / 0.08);
+}
+
+.card-premium {
+  background: var(--color-base-300);
+  border: 1px solid color-mix(in oklab, var(--color-base-content) 8%, transparent);
+  border-radius: var(--radius-box);
+  overflow: hidden;
+  transition:
+    transform var(--duration-base) var(--ease-out-soft),
+    box-shadow var(--duration-base) var(--ease-out-soft),
+    border-color var(--duration-base) ease;
+}
+
+.card-premium:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in oklab, var(--color-primary) 28%, transparent);
+  box-shadow:
+    0 8px 24px rgb(0 0 0 / 0.12),
+    0 0 28px color-mix(in oklab, var(--color-primary) 12%, transparent);
+}
+
+.card-image {
+  border-radius: var(--radius-image);
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-slow) var(--ease-out-soft);
+}
+
+.card-premium:hover .card-image img {
+  transform: scale(1.04);
+}
+
+.stat-card {
+  background: color-mix(in oklab, var(--color-base-300) 80%, transparent);
+  border: 1px solid color-mix(in oklab, var(--color-base-content) 8%, transparent);
+  border-radius: var(--radius-box);
+  padding: 1.5rem;
+  transition:
+    border-color var(--duration-base) ease,
+    box-shadow var(--duration-base) ease;
+}
+
+.stat-card:hover {
+  border-color: color-mix(in oklab, var(--color-primary) 30%, transparent);
+  box-shadow: 0 0 24px color-mix(in oklab, var(--color-primary) 10%, transparent);
+}
+
+.stat-card__value {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.stat-card__label {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: color-mix(in oklab, currentColor 55%, transparent);
+}
+
+.timeline-card {
+  position: relative;
+  padding: 1.5rem;
+  background: var(--color-base-300);
+  border: 1px solid color-mix(in oklab, var(--color-base-content) 8%, transparent);
+  border-radius: var(--radius-box);
+}
+
+.timeline-card__date {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.project-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.certificate-card {
+  color: inherit;
+}
+
+.certificate-card__image {
+  background: var(--color-base-200);
+  display: block;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.certificate-card__image img {
+  transition:
+    transform var(--duration-slow) var(--ease-out-soft),
+    filter var(--duration-base) ease;
+}
+
+.certificate-card__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in oklab, var(--color-base-100) 55%, transparent);
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease-out-soft);
+  pointer-events: none;
+}
+
+.certificate-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  border-radius: var(--radius-field);
+  border: 1px solid color-mix(in oklab, var(--color-primary) 40%, transparent);
+  background: color-mix(in oklab, var(--color-base-200) 80%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.certificate-card__id {
+  cursor: pointer;
+  appearance: none;
+  transition:
+    color var(--duration-fast) ease,
+    background-color var(--duration-fast) ease,
+    border-color var(--duration-fast) ease;
+}
+
+.certificate-card__id:hover,
+.certificate-card__id:focus-visible {
+  color: var(--color-primary);
+}
+
+.certificate-card__id:focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--color-primary) 50%, transparent);
+  outline-offset: 2px;
+}
+
+.certificate-card__id svg {
+  opacity: 0.75;
+  flex-shrink: 0;
+}
+
+.certificate-card:hover .certificate-card__overlay,
+.certificate-card__image:focus-visible .certificate-card__overlay {
+  opacity: 1;
+}
+
+.certificate-card:hover .certificate-card__image img,
+.certificate-card__image:focus-visible img {
+  transform: scale(1.04);
+  filter: brightness(1.05);
+}
+
+[data-theme="ivory"] .card-surface,
+[data-theme="ivory"] .card-premium,
+[data-theme="ivory"] .timeline-card {
+  background: var(--color-base-200);
+  box-shadow:
+    0 1px 2px rgb(31 31 40 / 0.04),
+    0 8px 24px rgb(31 31 40 / 0.05);
+}

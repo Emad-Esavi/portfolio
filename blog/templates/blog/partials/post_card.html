@@ -1,0 +1,55 @@
+{# Expected: post (blog.Post instance) #}
+{% load i18n %}
+<article class="card-premium tilt-on-hover glow-on-hover">
+  <div class="p-3 pb-0">
+    <a href="{{ post.get_absolute_url }}" class="card-image relative aspect-16/10 block" aria-label="{{ post.title }}">
+      {% if post.image_url %}
+      <img
+        src="{{ post.image_url }}"
+        alt="{{ post.featured_image_alt|default:post.title }}"
+        loading="lazy"
+      >
+      {% else %}
+      <div class="flex h-full w-full items-center justify-center bg-base-200 opacity-40 gradient-blue-purple"></div>
+      {% endif %}
+      {% if post.is_featured %}
+      <div class="absolute top-3 end-3">
+        <span class="badge-soft badge-soft--primary">{% trans "Featured" %}</span>
+      </div>
+      {% endif %}
+    </a>
+  </div>
+
+  <div class="p-6">
+    <div class="post-meta mb-3">
+      {% if post.category %}
+      <a href="{{ post.category.get_absolute_url }}" class="badge-soft badge-soft--primary">
+        {{ post.category.name }}
+      </a>
+      {% endif %}
+      {% if post.published_at %}
+      <time datetime="{{ post.published_at|date:'c' }}" class="post-meta__item">
+        {% include "components/ui/icon.html" with name="calendar" size="sm" %}
+        {{ post.published_at|date:"M j, Y" }}
+      </time>
+      {% endif %}
+      <span class="post-meta__item">
+        {% include "components/ui/icon.html" with name="clock" size="sm" %}
+        {% blocktrans count minutes=post.reading_time %}{{ minutes }} min read{% plural %}{{ minutes }} min read{% endblocktrans %}
+      </span>
+    </div>
+
+    <h3 class="text-h3 mb-2">
+      <a href="{{ post.get_absolute_url }}" class="transition-colors hover:text-primary">
+        {{ post.title }}
+      </a>
+    </h3>
+
+    <p class="mb-5 text-body text-muted">{{ post.plain_excerpt }}</p>
+
+    <a href="{{ post.get_absolute_url }}" class="btn btn-outline btn-sm btn-ripple">
+      {% trans "Read More" %}
+      {% include "components/ui/icon.html" with name="arrow-right" size="sm" %}
+    </a>
+  </div>
+</article>

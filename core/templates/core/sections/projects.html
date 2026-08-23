@@ -1,0 +1,33 @@
+{% load i18n %}
+
+{% if projects %}
+<section id="projects" class="section">
+    <div class="section-container">
+        <div class="section-header section-header--center" data-reveal>
+            <p class="text-eyebrow">{% trans "Selected Work" %}</p>
+            <h2 class="section-title text-balance">{% trans "Featured Projects" %}</h2>
+            <p class="section-subtitle">
+                {% trans "A selection of projects showcasing my experience in backend development, APIs, and modern web technologies." %}
+            </p>
+        </div>
+
+        <div class="mt-16 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+            {% for project in projects %}
+                {% url 'project_detail' project.slug as project_url %}
+                {% if project.thumbnail %}
+                    {% include "components/ui/project_card.html" with title=project.title description=project.short_description image_url=project.thumbnail.url featured=project.is_featured skills=project.skills.all github_url=project.github_url live_url=project.live_url href=project_url %}
+                {% else %}
+                    {% include "components/ui/project_card.html" with title=project.title description=project.short_description featured=project.is_featured skills=project.skills.all github_url=project.github_url live_url=project.live_url href=project_url %}
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="mt-16 text-center" data-reveal>
+            <a href="{% url 'projects' %}" class="btn btn-glass btn-wide btn-ripple">
+                {% trans "View All Projects" %}
+                {% include "components/ui/icon.html" with name="arrow-right" size="sm" %}
+            </a>
+        </div>
+    </div>
+</section>
+{% endif %}

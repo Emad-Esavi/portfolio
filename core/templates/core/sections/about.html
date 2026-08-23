@@ -1,0 +1,53 @@
+{% load i18n %}
+
+<section id="about" class="section">
+    <div class="section-container">
+        <div class="section-header section-header--center" data-reveal>
+            <p class="text-eyebrow">{% trans "Introduction" %}</p>
+            <h2 class="section-title text-balance">{% trans "About Me" %}</h2>
+            <p class="section-subtitle">
+                {% trans "A quick introduction about who I am and what I enjoy building." %}
+            </p>
+        </div>
+
+        <div class="mt-16 grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
+            <div data-reveal="right">
+                {% if profile %}
+                <p class="text-body-lg leading-relaxed text-base-content/85">
+                    {{ profile.about|default:profile.short_bio }}
+                </p>
+                {% else %}
+                <p class="text-body-lg leading-relaxed text-base-content/85">
+                    {% trans "I'm a passionate backend developer who enjoys building scalable web applications, REST APIs, and clean software architecture using modern technologies." %}
+                </p>
+                <p class="mt-6 text-body text-muted">
+                    {% trans "This section will automatically display your personal introduction after you create your profile in the Django admin panel." %}
+                </p>
+                {% endif %}
+
+                <p class="mt-6 text-body text-muted">
+                    {% trans "I enjoy designing scalable backend systems, building REST APIs, optimizing databases, and creating clean, maintainable software. My goal is to build applications that are fast, secure, and easy to maintain." %}
+                </p>
+            </div>
+
+            {% trans "Years Experience" as label_years %}
+            {% trans "Projects Delivered" as label_projects %}
+            {% trans "APIs Shipped" as label_apis %}
+            {% trans "Client Focus" as label_focus %}
+
+            <div class="grid grid-cols-2 gap-4" data-reveal="left" data-delay="2">
+                {% include "components/ui/stat_card.html" with value="1+" label=label_years delay="1" %}
+                {% include "components/ui/stat_card.html" with value="12+" label=label_projects delay="2" %}
+                {% include "components/ui/stat_card.html" with value="4+" label=label_apis delay="3" %}
+                {% include "components/ui/stat_card.html" with value="100%" label=label_focus delay="4" %}
+            </div>
+        </div>
+
+        <div class="mt-16 text-center" data-reveal>
+            <a href="{% url 'about' %}" class="btn btn-glass btn-wide btn-ripple">
+                {% trans "Learn More About Me" %}
+                {% include "components/ui/icon.html" with name="arrow-right" size="sm" %}
+            </a>
+        </div>
+    </div>
+</section>

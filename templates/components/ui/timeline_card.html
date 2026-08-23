@@ -1,0 +1,14 @@
+<article class="timeline-card hover-lift {{ class|default:'' }}" data-reveal{% if delay %} data-delay="{{ delay }}"{% endif %}>
+  {% if date %}
+  <p class="timeline-card__date mb-3">{{ date }}</p>
+  {% endif %}
+  {% if title %}
+  <h3 class="text-h3">{{ title }}</h3>
+  {% endif %}
+  {% if company %}
+  <p class="mt-1 text-sm font-medium text-primary/80">{{ company }}</p>
+  {% endif %}
+  {% if description %}
+  <p class="mt-4 text-muted text-body">{{ description }}</p>
+  {% endif %}
+</article>

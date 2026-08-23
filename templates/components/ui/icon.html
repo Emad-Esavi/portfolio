@@ -1,0 +1,108 @@
+{# Expected: name (required), class (optional), size (optional: sm|md|lg) #}
+{% with sz=size|default:"md" %}
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  viewBox="0 0 24 24"
+  stroke="currentColor"
+  stroke-width="1.75"
+  aria-hidden="true"
+  class="{% if sz == 'sm' %}h-4 w-4{% elif sz == 'lg' %}h-6 w-6{% else %}h-5 w-5{% endif %} {{ class|default:'' }}"
+>
+  {% if name == "menu" %}
+    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+  {% elif name == "close" %}
+    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+  {% elif name == "chevron-down" %}
+    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+  {% elif name == "chevron-right" %}
+    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+  {% elif name == "arrow-right" %}
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6" />
+  {% elif name == "arrow-left" %}
+    <path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5M11 6l-6 6 6 6" />
+  {% elif name == "external" %}
+    <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+  {% elif name == "github" %}
+    <path stroke-linecap="round" stroke-linejoin="round" d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6.1 0-1.3-.5-2.4-1.3-3.2.1-.3.6-1.6-.1-3.2 0 0-1.1-.3-3.5 1.3a12 12 0 00-6.2 0C6.9 2.1 5.8 2.4 5.8 2.4c-.7 1.6-.2 2.9-.1 3.2A4.6 4.6 0 004.4 8.7c0 4.7 2.7 5.8 5.5 6.1-.6.5-.9 1.3-.9 2.5V21" />
+  {% elif name == "sun" %}
+    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2m0 14v2M4.9 4.9l1.4 1.4m11.4 11.4l1.4 1.4M3 12h2m14 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4M12 8a4 4 0 100 8 4 4 0 000-8z" />
+  {% elif name == "moon" %}
+    <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z" />
+  {% elif name == "globe" %}
+    <circle cx="12" cy="12" r="9" />
+    <path stroke-linecap="round" stroke-linejoin="round" d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18" />
+  {% elif name == "check" %}
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+  {% elif name == "download" %}
+    <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 4v12m0 0l-4-4m4 4l4-4" />
+  {% elif name == "mail" %}
+    <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+  {% elif name == "map-pin" %}
+    <path stroke-linecap="round" stroke-linejoin="round" d="M12 21s7-5.3 7-11a7 7 0 10-14 0c0 5.7 7 11 7 11z" />
+    <circle cx="12" cy="10" r="2.5" />
+  {% elif name == "phone" %}
+    <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h2.3a1 1 0 01.95.68l1.1 3.3a1 1 0 01-.27 1.1L7.9 9.9a12 12 0 006.2 6.2l1.8-1.18a1 1 0 011.1-.27l3.3 1.1a1 1 0 01.68.95V19a2 2 0 01-2 2A16 16 0 013 5z" />
+  {% elif name == "calendar" %}
+    <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3M3.5 9.5h17M5 5h14a2 2 0 012 2v12a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z" />
+  {% elif name == "clock" %}
+    <circle cx="12" cy="12" r="9" />
+    <path stroke-linecap="round" stroke-linejoin="round" d="M12 7v5l3 2" />
+  {% elif name == "tag" %}
+    <path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M3 11l8.29-8.29a1.5 1.5 0 012.12 0L21 10.29a1.5 1.5 0 010 2.12L12.71 21a1.5 1.5 0 01-2.12 0L3 13.41V11z" />
+  {% elif name == "search" %}
+    <circle cx="11" cy="11" r="7" />
+    <path stroke-linecap="round" stroke-linejoin="round" d="M20 20l-3.5-3.5" />
+  {% elif name == "folder" %}
+    <path stroke-linecap="round" stroke-linejoin="round" d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z" />
+  {% elif name == "eye" %}
+    <path stroke-linecap="round" stroke-linejoin="round" d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z" />
+    <circle cx="12" cy="12" r="3" />
+  {% elif name == "user" %}
+    <path stroke-linecap="round" stroke-linejoin="round" d="M20 21a8 8 0 00-16 0M12 11a4 4 0 100-8 4 4 0 000 8z" />
+  {% elif name == "server" %}
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+  {% elif name == "database" %}
+    <ellipse cx="12" cy="6" rx="7" ry="2.5" />
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5 6v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V6M5 12v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-6" />
+  {% elif name == "code" %}
+    <path stroke-linecap="round" stroke-linejoin="round" d="M8 8l-4 4 4 4M16 8l4 4-4 4M14 4l-4 16" />
+  {% elif name == "terminal" %}
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5 7l5 5-5 5M12 17h7" />
+  {% elif name == "python" %}
+    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3.5c-2.5 0-3 .2-3.5.4C6.8 4.4 6 5.5 6 7.2V9h5v.5H5.2C3.8 9.5 3 10.5 3 12.2c0 1.8 0 2.8.2 4.2.2 1.3 1.1 2.2 2.4 2.3 1.6.2 2.8.2 4.4 0 .5-.1.9-.2 1.2-.5.3-.3.4-.7.4-1.2V15H9.5" />
+    <path stroke-linecap="round" stroke-linejoin="round" d="M12 20.5c2.5 0 3-.2 3.5-.4 1.7-.5 2.5-1.6 2.5-3.3V15h-5v-.5h5.8c1.4 0 2.2-1 2.2-2.7 0-1.8 0-2.8-.2-4.2-.2-1.3-1.1-2.2-2.4-2.3-1.6-.2-2.8-.2-4.4 0-.5.1-.9.2-1.2.5-.3.3-.4.7-.4 1.2V9H14.5" />
+    <circle cx="9.5" cy="6.2" r="0.7" fill="currentColor" stroke="none" />
+    <circle cx="14.5" cy="17.8" r="0.7" fill="currentColor" stroke="none" />
+  {% elif name == "javascript" %}
+    <rect x="4" y="4" width="16" height="16" rx="2.5" stroke-linecap="round" stroke-linejoin="round" />
+    <path stroke-linecap="round" stroke-linejoin="round" d="M10 9.5v6.2c0 1.1-.5 1.6-1.4 1.6-.8 0-1.2-.4-1.5-.9" />
+    <path stroke-linecap="round" stroke-linejoin="round" d="M13 15.2c.3.6.8 1.1 1.7 1.1.9 0 1.5-.5 1.5-1.3 0-.9-.5-1.2-1.5-1.6-.9-.4-1.7-.8-1.7-1.9 0-1 .8-1.7 1.9-1.7.8 0 1.3.3 1.7 1" />
+  {% elif name == "php" %}
+    <ellipse cx="12" cy="12" rx="9" ry="5" />
+    <path stroke-linecap="round" stroke-linejoin="round" d="M7.2 10.2v3.6M7.2 12h1.4c.8 0 1.3-.4 1.3-1s-.5-1-1.3-1H7.2M12.2 10.2v3.6h1.5c1 0 1.6-.5 1.6-1.3s-.6-1.3-1.6-1.3h-1.5M17.5 10.2v3.6" />
+  {% elif name == "django" %}
+    <path stroke-linecap="round" stroke-linejoin="round" d="M9.5 3.5v12.5c0 1.5.8 2.5 2.5 2.5 2.2 0 3.5-1.5 3.5-3.8S14.2 10.8 12 10.8c-.5 0-1 .1-1.5.2" />
+    <path stroke-linecap="round" stroke-linejoin="round" d="M9.5 3.5h2.5M16.5 8v8.5c0 1.2.6 1.8 1.6 1.8.5 0 .9-.1 1.2-.2" />
+    <circle cx="17.3" cy="6.2" r="0.8" fill="currentColor" stroke="none" />
+  {% elif name == "laravel" %}
+    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3.5l8 4.6v7.8L12 20.5l-8-4.6V8.1L12 3.5z" />
+    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3.5v7.8M4 8.1l8 4.6 8-4.6M4 15.9l8-4.6 8 4.6M8 10.4l8 4.6M16 10.4l-8 4.6" />
+  {% elif name == "wordpress" %}
+    <circle cx="12" cy="12" r="9" />
+    <path stroke-linecap="round" stroke-linejoin="round" d="M7 8.5l2 7.5L12 9l3 7 2-7.5" />
+  {% elif name == "telegram" %}
+    <path stroke-linecap="round" stroke-linejoin="round" d="M21.5 4.5L2.8 11.7c-.9.35-.89 1.34.02 1.66l4.7 1.66 1.8 5.4c.28.84 1.36 1.05 1.92.37l2.6-3.15 4.85 3.55c.7.51 1.7.14 1.9-.7L22.4 5.5c.2-.9-.66-1.64-1.5-1.3l-.4.3z" />
+    <path stroke-linecap="round" stroke-linejoin="round" d="M9.5 14.8l8.2-7.3" />
+  {% elif name == "whatsapp" %}
+    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3.5a8.5 8.5 0 00-7.3 12.8L3.5 20.5l4.4-1.15A8.5 8.5 0 1012 3.5z" />
+    <path stroke-linecap="round" stroke-linejoin="round" d="M9.2 9.4c.2-.45.4-.47.6-.48h.5c.17 0 .36 0 .52.4.17.42.58 1.42.63 1.52.05.1.08.22 0 .35-.08.14-.12.22-.24.35-.12.12-.25.28-.36.37-.12.1-.24.21-.1.42.14.2.62 1.02 1.33 1.65.91.8 1.68 1.05 1.92 1.17.24.12.38.1.52-.06.14-.16.6-.7.76-.94.16-.24.32-.2.54-.12.22.08 1.4.66 1.64.78.24.12.4.18.46.28.06.1.06.58-.14 1.14-.2.56-1.16 1.08-1.6 1.15-.4.06-.92.09-1.48-.1-.34-.12-.78-.26-1.34-.52-2.34-1.02-3.86-3.4-3.98-3.56-.12-.16-.94-1.25-.94-2.38 0-1.13.6-1.68.8-1.9z" />
+  {% elif name == "copy" %}
+    <path stroke-linecap="round" stroke-linejoin="round" d="M8 8V6a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2h-2M6 8h8a2 2 0 012 2v8a2 2 0 01-2 2H6a2 2 0 01-2-2v-8a2 2 0 012-2z" />
+  {% elif name == "link" %}
+    <path stroke-linecap="round" stroke-linejoin="round" d="M10 13a5 5 0 007.07 0l1.41-1.41a5 5 0 00-7.07-7.07L10 5.93M14 11a5 5 0 00-7.07 0L5.52 12.4a5 5 0 007.07 7.07L14 18.07" />
+  {% else %}
+    <circle cx="12" cy="12" r="4" />
+  {% endif %}
+</svg>
+{% endwith %}

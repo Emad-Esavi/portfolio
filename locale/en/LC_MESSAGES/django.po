@@ -1,0 +1,806 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: portfolio\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-12 00:00+0000\n"
+"PO-Revision-Date: 2026-08-12 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: en\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "+1 555 000 0000 (optional)"
+msgstr "+1 555 000 0000 (optional)"
+
+msgid "A clear, collaborative process from discovery to delivery."
+msgstr "A clear, collaborative process from discovery to delivery."
+
+msgid ""
+"A closer look at who I am, what I build, and the path that brought me here."
+msgstr ""
+"A closer look at who I am, what I build, and the path that brought me here."
+
+msgid ""
+"A condensed look at recent roles. Full timeline lives on the home page."
+msgstr ""
+"A condensed look at recent roles. Full timeline lives on the home page."
+
+msgid ""
+"A curated collection of applications, APIs, and experiments I've built with "
+"modern backend technologies."
+msgstr ""
+"A curated collection of applications, APIs, and experiments I've built with "
+"modern backend technologies."
+
+msgid "A quick introduction about who I am and what I enjoy building."
+msgstr "A quick introduction about who I am and what I enjoy building."
+
+msgid ""
+"A selection of projects showcasing my experience in backend development, "
+"APIs, and modern web technologies."
+msgstr ""
+"A selection of projects showcasing my experience in backend development, "
+"APIs, and modern web technologies."
+
+msgid "About"
+msgstr "About"
+
+msgid "About Me"
+msgstr "About Me"
+
+msgid "Acme Inc. (optional)"
+msgstr "Acme Inc. (optional)"
+
+msgid "Add location, email, and phone in your profile to show them here."
+msgstr "Add location, email, and phone in your profile to show them here."
+
+msgid "All"
+msgstr "All"
+
+msgid "All Posts"
+msgstr "All Posts"
+
+msgid "All rights reserved."
+msgstr "All rights reserved."
+
+msgid "APIs Shipped"
+msgstr "APIs Shipped"
+
+msgid ""
+"Articles, notes, and write-ups on backend development, APIs, and building "
+"reliable systems."
+msgstr ""
+"Articles, notes, and write-ups on backend development, APIs, and building "
+"reliable systems."
+
+msgid "Author"
+msgstr "Author"
+
+msgid "Back to Home"
+msgstr "Back to Home"
+
+msgid "Backend Developer"
+msgstr "Backend Developer"
+
+msgid "Backend Development"
+msgstr "Backend Development"
+
+msgid ""
+"Backend development, REST APIs, and database design services for reliable, "
+"scalable web applications."
+msgstr ""
+"Backend development, REST APIs, and database design services for reliable, "
+"scalable web applications."
+
+msgid ""
+"Backend systems, REST APIs, Django and Laravel applications, database "
+"design, and integrations. I also build personal websites and shop websites, "
+"and can connect your custom frontend to a Laravel or Django backend. I'm "
+"happy to discuss both greenfield builds and improvements to existing "
+"products."
+msgstr ""
+"Backend systems, REST APIs, Django and Laravel applications, database "
+"design, and integrations. I also build personal websites and shop websites, "
+"and can connect your custom frontend to a Laravel or Django backend. I'm "
+"happy to discuss both greenfield builds and improvements to existing "
+"products."
+
+msgid "Blog"
+msgstr "Blog"
+
+msgid "Blog RSS Feed"
+msgstr "Blog RSS Feed"
+
+msgid "Breadcrumb"
+msgstr "Breadcrumb"
+
+msgid ""
+"Browse featured and completed projects spanning backend systems, APIs, and "
+"modern web applications."
+msgstr ""
+"Browse featured and completed projects spanning backend systems, APIs, and "
+"modern web applications."
+
+msgid ""
+"Browse more articles on backend systems, APIs, and building reliable "
+"products."
+msgstr ""
+"Browse more articles on backend systems, APIs, and building reliable "
+"products."
+
+msgid "Build"
+msgstr "Build"
+
+msgid ""
+"Building fast, secure, and well-documented APIs for web applications, mobile"
+" apps, and third-party integrations."
+msgstr ""
+"Building fast, secure, and well-documented APIs for web applications, mobile"
+" apps, and third-party integrations."
+
+msgid ""
+"Building scalable Django applications, REST APIs, and modern backend "
+"architectures with a focus on performance and maintainability."
+msgstr ""
+"Building scalable Django applications, REST APIs, and modern backend "
+"architectures with a focus on performance and maintainability."
+
+msgid "Capabilities"
+msgstr "Capabilities"
+
+msgid "Career"
+msgstr "Career"
+
+msgid "Certificates"
+msgstr "Certificates"
+
+msgid "Certificates will appear here once they are added in the Django admin."
+msgstr ""
+"Certificates will appear here once they are added in the Django admin."
+
+msgid "Clear"
+msgstr "Clear"
+
+msgid "Client Focus"
+msgstr "Client Focus"
+
+msgid "Close"
+msgstr "Close"
+
+msgid "Close navigation menu"
+msgstr "Close navigation menu"
+
+msgid "Common Questions"
+msgstr "Common Questions"
+
+msgid "Company"
+msgstr "Company"
+
+msgid "Company must be at most 150 characters."
+msgstr "Company must be at most 150 characters."
+
+msgid "Completed"
+msgstr "Completed"
+
+msgid "Connect"
+msgstr "Connect"
+
+msgid "Contact"
+msgstr "Contact"
+
+msgid "Contact Me"
+msgstr "Contact Me"
+
+msgid "Copied"
+msgstr "Copied"
+
+msgid "Copy credential ID"
+msgstr "Copy credential ID"
+
+msgid "Copy link"
+msgstr "Copy link"
+
+msgid "Crafting reliable backend systems and refined digital experiences."
+msgstr "Crafting reliable backend systems and refined digital experiences."
+
+msgid ""
+"Creating efficient database schemas, optimizing queries, and ensuring data "
+"integrity for long-term scalability."
+msgstr ""
+"Creating efficient database schemas, optimizing queries, and ensuring data "
+"integrity for long-term scalability."
+
+msgid "Credential ID copied"
+msgstr "Credential ID copied"
+
+msgid "Credentials"
+msgstr "Credentials"
+
+msgid "Database Design"
+msgstr "Database Design"
+
+msgid "Deliver"
+msgstr "Deliver"
+
+msgid "Design"
+msgstr "Design"
+
+msgid ""
+"Designing secure, scalable, and maintainable backend systems using Django "
+"and modern development practices."
+msgstr ""
+"Designing secure, scalable, and maintainable backend systems using Django "
+"and modern development practices."
+
+msgid ""
+"Developed APIs, optimized databases, integrated third-party services, and "
+"collaborated with frontend developers on production applications."
+msgstr ""
+"Developed APIs, optimized databases, integrated third-party services, and "
+"collaborated with frontend developers on production applications."
+
+msgid "Discover"
+msgstr "Discover"
+
+msgid "Discuss a Similar Project"
+msgstr "Discuss a Similar Project"
+
+msgid "Do you work remotely?"
+msgstr "Do you work remotely?"
+
+msgid "Download CV"
+msgstr "Download CV"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Email Address"
+msgstr "Email Address"
+
+msgid "English"
+msgstr "English"
+
+msgid "Enter a valid email address."
+msgstr "Enter a valid email address."
+
+msgid "Error 404"
+msgstr "Error 404"
+
+msgid "Experience"
+msgstr "Experience"
+
+msgid "Experience Snapshot"
+msgstr "Experience Snapshot"
+
+msgid "Explore the full blog"
+msgstr "Explore the full blog"
+
+msgid "FAQ"
+msgstr "FAQ"
+
+msgid "Featured"
+msgstr "Featured"
+
+msgid "Featured Posts"
+msgstr "Featured Posts"
+
+msgid "Featured Projects"
+msgstr "Featured Projects"
+
+msgid "Full Name"
+msgstr "Full Name"
+
+msgid "Gallery"
+msgstr "Gallery"
+
+msgid "Get in Touch"
+msgstr "Get in Touch"
+
+msgid "Get in touch"
+msgstr "Get in touch"
+
+msgid ""
+"Get in touch about backend development, APIs, or a new project "
+"collaboration."
+msgstr ""
+"Get in touch about backend development, APIs, or a new project "
+"collaboration."
+
+msgid ""
+"Have a project in mind or just want to say hello? I'd love to hear from you."
+msgstr ""
+"Have a project in mind or just want to say hello? I'd love to hear from you."
+
+msgid "Have a similar idea?"
+msgstr "Have a similar idea?"
+
+msgid "Hello, I'm"
+msgstr "Hello, I'm"
+
+msgid ""
+"Helping businesses build reliable, scalable, and high-performance web "
+"applications."
+msgstr ""
+"Helping businesses build reliable, scalable, and high-performance web "
+"applications."
+
+msgid "Highlights"
+msgstr "Highlights"
+
+msgid "Home"
+msgstr "Home"
+
+msgid "How I Work"
+msgstr "How I Work"
+
+msgid "How quickly do you respond?"
+msgstr "How quickly do you respond?"
+
+msgid ""
+"I enjoy designing scalable backend systems, building REST APIs, optimizing "
+"databases, and creating clean, maintainable software. My goal is to build "
+"applications that are fast, secure, and easy to maintain."
+msgstr ""
+"I enjoy designing scalable backend systems, building REST APIs, optimizing "
+"databases, and creating clean, maintainable software. My goal is to build "
+"applications that are fast, secure, and easy to maintain."
+
+msgid ""
+"I typically reply within 1–2 business days. For urgent project inquiries, "
+"include deadlines in your message so I can prioritize accordingly."
+msgstr ""
+"I typically reply within 1–2 business days. For urgent project inquiries, "
+"include deadlines in your message so I can prioritize accordingly."
+
+msgid "I'll get back to you as soon as I can."
+msgstr "I'll get back to you as soon as I can."
+
+msgid ""
+"I'm a passionate backend developer who enjoys building scalable web "
+"applications, REST APIs, and clean software architecture using modern "
+"technologies."
+msgstr ""
+"I'm a passionate backend developer who enjoys building scalable web "
+"applications, REST APIs, and clean software architecture using modern "
+"technologies."
+
+msgid "Image preview"
+msgstr "Image preview"
+
+msgid ""
+"Implement with clean code, tests, and iterative feedback so quality stays "
+"high."
+msgstr ""
+"Implement with clean code, tests, and iterative feedback so quality stays "
+"high."
+
+msgid "In Progress"
+msgstr "In Progress"
+
+msgid "Introduction"
+msgstr "Introduction"
+
+msgid "John Doe"
+msgstr "John Doe"
+
+msgid "Keep Reading"
+msgstr "Keep Reading"
+
+msgid "Languages"
+msgstr "Languages"
+
+msgid "Latest articles and notes from the portfolio blog."
+msgstr "Latest articles and notes from the portfolio blog."
+
+msgid "Latest from the Blog"
+msgstr "Latest from the Blog"
+
+msgid "Learn More About Me"
+msgstr "Learn More About Me"
+
+msgid "Learn more about my background, skills, and professional journey."
+msgstr "Learn more about my background, skills, and professional journey."
+
+msgid "Let's build something solid"
+msgstr "Let's build something solid"
+
+msgid ""
+"Let's talk about how we can build something reliable, scalable, and "
+"thoughtfully designed."
+msgstr ""
+"Let's talk about how we can build something reliable, scalable, and "
+"thoughtfully designed."
+
+msgid "Let's Work Together"
+msgstr "Let's Work Together"
+
+msgid "Link copied"
+msgstr "Link copied"
+
+msgid "Live Demo"
+msgstr "Live Demo"
+
+msgid "Location"
+msgstr "Location"
+
+msgid "Message"
+msgstr "Message"
+
+msgid "Message must be at least 10 characters."
+msgstr "Message must be at least 10 characters."
+
+msgid "Message must be at most 5000 characters."
+msgstr "Message must be at most 5000 characters."
+
+msgid "Mobile navigation"
+msgstr "Mobile navigation"
+
+msgid "More Work"
+msgstr "More Work"
+
+msgid "More Writing"
+msgstr "More Writing"
+
+msgid "My professional journey and the milestones that have shaped my career."
+msgstr ""
+"My professional journey and the milestones that have shaped my career."
+
+msgid "Name must be at most 150 characters."
+msgstr "Name must be at most 150 characters."
+
+msgid "Navigate"
+msgstr "Navigate"
+
+msgid "Next"
+msgstr "Next"
+
+msgid "Next Step"
+msgstr "Next Step"
+
+msgid "No certificates yet"
+msgstr "No certificates yet"
+
+msgid "No posts match your search. Try a different query."
+msgstr "No posts match your search. Try a different query."
+
+msgid "No posts yet"
+msgstr "No posts yet"
+
+msgid ""
+"No projects match this filter. Try another status or view all projects."
+msgstr ""
+"No projects match this filter. Try another status or view all projects."
+
+msgid "No projects yet"
+msgstr "No projects yet"
+
+msgid "No published posts in this filter yet."
+msgstr "No published posts in this filter yet."
+
+msgid "Open navigation menu"
+msgstr "Open navigation menu"
+
+msgid "Overview"
+msgstr "Overview"
+
+msgid "Page Not Found"
+msgstr "Page Not Found"
+
+msgid "Page not found"
+msgstr "Page not found"
+
+msgid "Pagination"
+msgstr "Pagination"
+
+msgid "Pass this post along on Telegram, WhatsApp, or copy the link."
+msgstr "Pass this post along on Telegram, WhatsApp, or copy the link."
+
+msgid "Persian"
+msgstr "Persian"
+
+msgid "Phone"
+msgstr "Phone"
+
+msgid "Phone must be at most 30 characters."
+msgstr "Phone must be at most 30 characters."
+
+msgid "Planned"
+msgstr "Planned"
+
+msgid "Please correct the errors below."
+msgstr "Please correct the errors below."
+
+msgid "Please enter a message."
+msgstr "Please enter a message."
+
+msgid "Please enter your email address."
+msgstr "Please enter your email address."
+
+msgid "Please enter your name."
+msgstr "Please enter your name."
+
+msgid "Portfolio"
+msgstr "Portfolio"
+
+msgid "Portfolio Blog"
+msgstr "Portfolio Blog"
+
+msgid "Posts filed under %(category)s."
+msgstr "Posts filed under %(category)s."
+
+msgid "Posts tagged with %(tag)s."
+msgstr "Posts tagged with %(tag)s."
+
+msgid "Posts will appear here once they are published in the Django admin."
+msgstr "Posts will appear here once they are published in the Django admin."
+
+msgid "Present"
+msgstr "Present"
+
+msgid "Previous"
+msgstr "Previous"
+
+msgid "Process"
+msgstr "Process"
+
+msgid "Profile Photo"
+msgstr "Profile Photo"
+
+msgid "Project Inquiry"
+msgstr "Project Inquiry"
+
+msgid "Project Screenshots"
+msgstr "Project Screenshots"
+
+msgid "Projects"
+msgstr "Projects"
+
+msgid "Projects Delivered"
+msgstr "Projects Delivered"
+
+msgid "Projects will appear here once they are added in the Django admin."
+msgstr "Projects will appear here once they are added in the Django admin."
+
+msgid "Quick Facts"
+msgstr "Quick Facts"
+
+msgid "Read More"
+msgstr "Read More"
+
+msgid "Ready to start?"
+msgstr "Ready to start?"
+
+msgid ""
+"Recent articles and notes on backend development, APIs, and building "
+"reliable systems."
+msgstr ""
+"Recent articles and notes on backend development, APIs, and building "
+"reliable systems."
+
+msgid "Related Posts"
+msgstr "Related Posts"
+
+msgid "Related Projects"
+msgstr "Related Projects"
+
+msgid "REST API Development"
+msgstr "REST API Development"
+
+msgid "RSS Feed"
+msgstr "RSS Feed"
+
+msgid "Search"
+msgstr "Search"
+
+msgid "Search articles…"
+msgstr "Search articles…"
+
+msgid "Search posts"
+msgstr "Search posts"
+
+msgid "Select language"
+msgstr "Select language"
+
+msgid "Selected Work"
+msgstr "Selected Work"
+
+msgid "Send Message"
+msgstr "Send Message"
+
+msgid "Services"
+msgstr "Services"
+
+msgid ""
+"Shape architecture, data models, and interfaces that stay maintainable as "
+"you grow."
+msgstr ""
+"Shape architecture, data models, and interfaces that stay maintainable as "
+"you grow."
+
+msgid "Share"
+msgstr "Share"
+
+msgid ""
+"Ship, document, and hand over systems that are ready for production and "
+"future work."
+msgstr ""
+"Ship, document, and hand over systems that are ready for production and "
+"future work."
+
+msgid "Skills & Tools"
+msgstr "Skills & Tools"
+
+msgid "Social"
+msgstr "Social"
+
+msgid "Subject"
+msgstr "Subject"
+
+msgid "Subject must be at most 200 characters."
+msgstr "Subject must be at most 200 characters."
+
+msgid "Tags"
+msgstr "Tags"
+
+msgid "Tech Stack"
+msgstr "Tech Stack"
+
+msgid ""
+"Technologies and tools I use to build scalable, secure, and modern web "
+"applications."
+msgstr ""
+"Technologies and tools I use to build scalable, secure, and modern web "
+"applications."
+
+msgid "Technologies I use to design, build, and ship reliable software."
+msgstr "Technologies I use to design, build, and ship reliable software."
+
+msgid "Telegram"
+msgstr "Telegram"
+
+msgid ""
+"Tell me about your project and I'll help you choose the right approach for "
+"backend, APIs, or data."
+msgstr ""
+"Tell me about your project and I'll help you choose the right approach for "
+"backend, APIs, or data."
+
+msgid "Tell me about your project..."
+msgstr "Tell me about your project..."
+
+msgid "Thank you! Your message has been sent."
+msgstr "Thank you! Your message has been sent."
+
+msgid "The page you were looking for could not be found."
+msgstr "The page you were looking for could not be found."
+
+msgid "This post is a draft and is only visible to staff."
+msgstr "This post is a draft and is only visible to staff."
+
+msgid ""
+"This route doesn't exist — or it moved. Head home, or browse the projects "
+"instead."
+msgstr ""
+"This route doesn't exist — or it moved. Head home, or browse the projects "
+"instead."
+
+msgid ""
+"This section will automatically display your personal introduction after you"
+" create your profile in the Django admin panel."
+msgstr ""
+"This section will automatically display your personal introduction after you"
+" create your profile in the Django admin panel."
+
+msgid "Toggle color theme"
+msgstr "Toggle color theme"
+
+msgid "Toggle theme"
+msgstr "Toggle theme"
+
+msgid "Too many messages. Please wait an hour before trying again."
+msgstr "Too many messages. Please wait an hour before trying again."
+
+msgid ""
+"Understand goals, constraints, and success metrics for your product or API."
+msgstr ""
+"Understand goals, constraints, and success metrics for your product or API."
+
+msgid "Verified credentials and courses that shaped my engineering craft."
+msgstr "Verified credentials and courses that shaped my engineering craft."
+
+msgid "View All Certificates"
+msgstr "View All Certificates"
+
+msgid "View All Posts"
+msgstr "View All Posts"
+
+msgid "View All Projects"
+msgstr "View All Projects"
+
+msgid "View All Services"
+msgstr "View All Services"
+
+msgid "View certificate"
+msgstr "View certificate"
+
+msgid "View certificate image"
+msgstr "View certificate image"
+
+msgid "View credential"
+msgstr "View credential"
+
+msgid "View Full Timeline"
+msgstr "View Full Timeline"
+
+msgid "View Projects"
+msgstr "View Projects"
+
+msgid "Website"
+msgstr "Website"
+
+msgid ""
+"Welcome to my portfolio. Please create your profile from the Django admin "
+"panel to customize this section."
+msgstr ""
+"Welcome to my portfolio. Please create your profile from the Django admin "
+"panel to customize this section."
+
+msgid "What I Offer"
+msgstr "What I Offer"
+
+msgid "What kind of projects do you take on?"
+msgstr "What kind of projects do you take on?"
+
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+msgid ""
+"Whether you're looking for a backend developer, need help building an API, "
+"or want to discuss a new project, feel free to reach out."
+msgstr ""
+"Whether you're looking for a backend developer, need help building an API, "
+"or want to discuss a new project, feel free to reach out."
+
+msgid "Writing"
+msgstr "Writing"
+
+msgid "Years Experience"
+msgstr "Years Experience"
+
+msgid ""
+"Yes — I collaborate remotely with clients worldwide, using clear async "
+"communication and regular check-ins."
+msgstr ""
+"Yes — I collaborate remotely with clients worldwide, using clear async "
+"communication and regular check-ins."
+
+msgid "Your Name"
+msgstr "Your Name"
+
+msgid "%(minutes)s min read"
+msgid_plural "%(minutes)s min read"
+msgstr[0] "%(minutes)s min read"
+msgstr[1] "%(minutes)s min read"
+
+msgid "%(views)s view"
+msgid_plural "%(views)s views"
+msgstr[0] "%(views)s view"
+msgstr[1] "%(views)s views"
+
+msgid "%(counter)s result for “%(search_query)s”"
+msgid_plural "%(counter)s results for “%(search_query)s”"
+msgstr[0] "%(counter)s result for “%(search_query)s”"
+msgstr[1] "%(counter)s results for “%(search_query)s”"
+
+msgid "Search: %(search_query)s"
+msgstr "Search: %(search_query)s"
+
+msgid "View screenshot %(n)s"
+msgstr "View screenshot %(n)s"
+
+msgid "View %(title)s certificate from %(issuer)s"
+msgstr "View %(title)s certificate from %(issuer)s"

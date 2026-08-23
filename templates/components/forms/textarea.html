@@ -1,0 +1,20 @@
+{# Expected: name, id, label, placeholder, required, value, rows, class, hint, errors #}
+<div class="form-field {{ class|default:'' }}">
+  {% if label %}
+  <label class="form-label" {% if id %}for="{{ id }}"{% endif %}>{{ label }}{% if required %} <span class="text-error">*</span>{% endif %}</label>
+  {% endif %}
+  <textarea
+    name="{{ name }}"
+    {% if id %}id="{{ id }}"{% endif %}
+    class="textarea-premium{% if errors %} is-invalid{% endif %}"
+    rows="{{ rows|default:6 }}"
+    {% if placeholder %}placeholder="{{ placeholder }}"{% endif %}
+    {% if required %}required{% endif %}
+    {% if errors %}aria-invalid="true"{% if id %} aria-describedby="{{ id }}-error"{% endif %}{% endif %}
+  >{% if value %}{{ value }}{% endif %}</textarea>
+  {% if errors %}
+  <p class="form-error" {% if id %}id="{{ id }}-error"{% endif %} role="alert">{{ errors|join:", " }}</p>
+  {% elif hint %}
+  <p class="form-hint">{{ hint }}</p>
+  {% endif %}
+</div>

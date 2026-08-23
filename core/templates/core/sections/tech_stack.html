@@ -1,0 +1,21 @@
+{% load i18n %}
+
+<section id="skills" class="section">
+    <div class="section-container">
+        <div class="section-header section-header--center" data-reveal>
+            <p class="text-eyebrow">{% trans "Capabilities" %}</p>
+            <h2 class="section-title text-balance">{% trans "Tech Stack" %}</h2>
+            <p class="section-subtitle">
+                {% trans "Technologies and tools I use to build scalable, secure, and modern web applications." %}
+            </p>
+        </div>
+
+        <div class="mt-14 flex flex-wrap justify-center gap-3" data-reveal data-delay="2">
+            {% if skills %}
+                {% for skill in skills %}
+                    {% include "components/ui/skill_tag.html" with text=skill.name %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</section>

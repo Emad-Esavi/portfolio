@@ -1,0 +1,291 @@
+/* Blog-specific: post meta row, search bar, markdown body */
+
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  font-size: 0.8125rem;
+  color: color-mix(in oklab, currentColor 60%, transparent);
+}
+
+.post-meta__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.post-meta__item svg {
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+.post-share {
+  padding-top: 1.75rem;
+  border-top: 1px solid color-mix(in oklab, var(--color-base-content) 10%, transparent);
+}
+
+.post-share__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* Blog search */
+.blog-search {
+  max-width: 36rem;
+  margin-inline: auto;
+}
+
+.blog-search__field {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.blog-search__icon {
+  position: absolute;
+  inset-inline-start: 1rem;
+  display: inline-flex;
+  color: color-mix(in oklab, currentColor 45%, transparent);
+  pointer-events: none;
+}
+
+.blog-search__input {
+  flex: 1;
+  padding-inline-start: 2.75rem !important;
+}
+
+/* Screen-reader only utility (if not already present) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Markdown rendered content */
+.markdown-content {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: color-mix(in oklab, var(--color-base-content) 88%, transparent);
+}
+
+.markdown-content > *:first-child {
+  margin-top: 0;
+}
+
+.markdown-content > *:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4,
+.markdown-content h5,
+.markdown-content h6 {
+  font-family: var(--font-display);
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: var(--color-base-content);
+  margin-top: 2.25rem;
+  margin-bottom: 0.875rem;
+  line-height: 1.25;
+  scroll-margin-top: 6rem;
+}
+
+.markdown-content h1 {
+  font-size: clamp(1.75rem, 2vw + 0.75rem, 2.25rem);
+}
+
+.markdown-content h2 {
+  font-size: clamp(1.4rem, 1.5vw + 0.6rem, 1.75rem);
+}
+
+.markdown-content h3 {
+  font-size: 1.25rem;
+}
+
+.markdown-content h4 {
+  font-size: 1.125rem;
+}
+
+.markdown-content p {
+  margin-bottom: 1.25rem;
+}
+
+.markdown-content a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+  transition: color var(--duration-fast) ease;
+}
+
+.markdown-content a:hover {
+  color: color-mix(in oklab, var(--color-primary) 80%, white);
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  margin-bottom: 1.25rem;
+  padding-inline-start: 1.5rem;
+}
+
+.markdown-content ul {
+  list-style: disc;
+}
+
+.markdown-content ol {
+  list-style: decimal;
+}
+
+.markdown-content li {
+  margin-bottom: 0.4rem;
+}
+
+.markdown-content li > ul,
+.markdown-content li > ol {
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.markdown-content blockquote {
+  margin: 1.5rem 0;
+  padding: 0.75rem 1.25rem;
+  border-inline-start: 3px solid var(--color-primary);
+  background: color-mix(in oklab, var(--color-primary) 6%, transparent);
+  border-radius: 0 var(--radius-field) var(--radius-field) 0;
+  color: color-mix(in oklab, currentColor 75%, transparent);
+  font-style: italic;
+}
+
+.markdown-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-content hr {
+  border: 0;
+  height: 1px;
+  margin: 2rem 0;
+  background: color-mix(in oklab, var(--color-base-content) 12%, transparent);
+}
+
+.markdown-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem auto;
+  border-radius: var(--radius-image);
+  border: 1px solid color-mix(in oklab, var(--color-base-content) 8%, transparent);
+}
+
+.markdown-content code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  padding: 0.15em 0.4em;
+  border-radius: 0.35rem;
+  background: color-mix(in oklab, var(--color-base-content) 8%, transparent);
+  color: var(--color-primary);
+}
+
+.markdown-content pre {
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  overflow-x: auto;
+  border-radius: var(--radius-box);
+  border: 1px solid color-mix(in oklab, var(--color-base-content) 10%, transparent);
+  background: var(--color-base-200);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.7;
+}
+
+.markdown-content pre code {
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font-size: inherit;
+  border-radius: 0;
+}
+
+.markdown-content table {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+  overflow-x: auto;
+  display: block;
+}
+
+.markdown-content th,
+.markdown-content td {
+  padding: 0.75rem 1rem;
+  border: 1px solid color-mix(in oklab, var(--color-base-content) 10%, transparent);
+  text-align: start;
+}
+
+.markdown-content th {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: color-mix(in oklab, var(--color-base-content) 4%, transparent);
+  color: color-mix(in oklab, currentColor 70%, transparent);
+}
+
+.markdown-content tr:hover td {
+  background: color-mix(in oklab, var(--color-base-content) 3%, transparent);
+}
+
+.markdown-content .toc {
+  margin: 1.5rem 0;
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-box);
+  border: 1px solid color-mix(in oklab, var(--color-base-content) 10%, transparent);
+  background: color-mix(in oklab, var(--color-base-300) 65%, transparent);
+}
+
+.markdown-content .toc ul {
+  margin-bottom: 0;
+}
+
+[data-theme="ivory"] .markdown-content pre {
+  background: var(--color-base-200);
+}
+
+[data-theme="ivory"] .markdown-content blockquote {
+  background: color-mix(in oklab, var(--color-primary) 5%, transparent);
+}
+
+[data-theme="ivory"] .markdown-content .toc {
+  background: color-mix(in oklab, var(--color-base-200) 90%, transparent);
+}
+
+/* Persian typography for blog body copy */
+html[lang="fa"] .markdown-content {
+  font-family: "Vazirmatn", var(--font-body);
+  line-height: 1.9;
+}
+
+html[lang="fa"] .markdown-content h1,
+html[lang="fa"] .markdown-content h2,
+html[lang="fa"] .markdown-content h3,
+html[lang="fa"] .markdown-content h4,
+html[lang="fa"] .markdown-content h5,
+html[lang="fa"] .markdown-content h6 {
+  font-family: "Vazirmatn", var(--font-display);
+  letter-spacing: 0;
+}
+
+html[lang="fa"] .markdown-content blockquote {
+  border-inline-start-width: 3px;
+}

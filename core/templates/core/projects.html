@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Projects" %}{% endblock %}
+
+{% block meta_description %}
+{% trans "Browse featured and completed projects spanning backend systems, APIs, and modern web applications." %}
+{% endblock %}
+
+{% block content %}
+{% trans "Portfolio" as ph_eyebrow %}
+{% trans "Projects" as ph_title %}
+{% trans "A curated collection of applications, APIs, and experiments I've built with modern backend technologies." as ph_subtitle %}
+{% include "components/layout/page_header.html" with eyebrow=ph_eyebrow title=ph_title subtitle=ph_subtitle crumb_label=ph_title align="center" %}
+
+<section class="section pt-0">
+    <div class="section-container">
+        <div class="filter-pills mb-12" data-reveal>
+            <a href="{% url 'projects' %}"
+               class="filter-pill {% if not current_status %}is-active{% endif %}">
+                {% trans "All" %}
+            </a>
+            {% for value, label in status_choices %}
+            <a href="{% url 'projects' %}?status={{ value }}"
+               class="filter-pill {% if current_status == value %}is-active{% endif %}">
+                {{ label }}
+            </a>
+            {% endfor %}
+        </div>
+
+        {% if projects %}
+        <div class="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+            {% for project in projects %}
+                {% url 'project_detail' project.slug as project_url %}
+                {% if project.thumbnail %}
+                    {% include "components/ui/project_card.html" with title=project.title description=project.short_description image_url=project.thumbnail.url featured=project.is_featured skills=project.skills.all github_url=project.github_url live_url=project.live_url href=project_url %}
+                {% else %}
+                    {% include "components/ui/project_card.html" with title=project.title description=project.short_description featured=project.is_featured skills=project.skills.all github_url=project.github_url live_url=project.live_url href=project_url %}
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        {% if page_obj.paginator.num_pages > 1 %}
+        <div class="mt-14 flex justify-center" data-reveal>
+            {% include "components/ui/pagination.html" with page_obj=page_obj %}
+        </div>
+        {% endif %}
+        {% else %}
+        <div class="empty-state" data-reveal>
+            <p class="empty-state__title">{% trans "No projects yet" %}</p>
+            <p class="empty-state__text">
+                {% if current_status %}
+                    {% trans "No projects match this filter. Try another status or view all projects." %}
+                {% else %}
+                    {% trans "Projects will appear here once they are added in the Django admin." %}
+                {% endif %}
+            </p>
+            {% if current_status %}
+            <a href="{% url 'projects' %}" class="btn btn-glass btn-sm btn-ripple mt-6">
+                {% trans "View All Projects" %}
+            </a>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

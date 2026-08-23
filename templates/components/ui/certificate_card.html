@@ -1,0 +1,136 @@
+{% load i18n %}
+
+{% trans "Copy credential ID" as label_copy_id %}
+{% trans "Credential ID copied" as label_id_copied %}
+{% trans "View certificate image" as label_view_image %}
+
+<article
+  class="certificate-card card-premium hover-lift glow-on-hover {{ class|default:'' }}"
+  data-reveal
+  {% if delay %}data-delay="{{ delay }}"{% endif %}
+  x-data="{
+    lightbox: false,
+    copied: false,
+    credentialId: '{{ certificate.credential_id|escapejs }}',
+    async copyId() {
+      if (!this.credentialId) return;
+      try {
+        await navigator.clipboard.writeText(this.credentialId);
+      } catch (e) {
+        const input = document.createElement('input');
+        input.value = this.credentialId;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        input.remove();
+      }
+      this.copied = true;
+      setTimeout(() => this.copied = false, 2000);
+    }
+  }"
+>
+  <div class="p-3 pb-0">
+    <button
+      type="button"
+      class="certificate-card__image card-image relative aspect-4/3 w-full cursor-pointer border-0 bg-transparent p-0 text-start"
+      @click="lightbox = true"
+      aria-label="{{ label_view_image }}"
+    >
+      {% if certificate.image %}
+      <img
+        src="{{ certificate.image.url }}"
+        alt="{{ certificate.title }} — {{ certificate.issuer }}"
+        loading="lazy"
+      >
+      {% endif %}
+      <div class="certificate-card__overlay" aria-hidden="true">
+        <span class="certificate-card__cta">
+          {% include "components/ui/icon.html" with name="eye" size="sm" %}
+          {% trans "View certificate" %}
+        </span>
+      </div>
+    </button>
+  </div>
+
+  <div class="p-5">
+    <p class="text-eyebrow mb-2">{{ certificate.issuer }}</p>
+    <h3 class="text-h3">{{ certificate.title }}</h3>
+    {% if certificate.description %}
+    <p class="mt-2 text-sm text-muted">{{ certificate.description }}</p>
+    {% endif %}
+
+    <div class="mt-4 flex flex-wrap items-center gap-3 text-xs text-muted">
+      {% if certificate.issued_on %}
+      <span class="font-mono tracking-wide uppercase">
+        {{ certificate.issued_on|date:"M Y" }}
+      </span>
+      {% endif %}
+      {% if certificate.credential_id %}
+      <button
+        type="button"
+        class="badge-soft certificate-card__id"
+        @click="copyId()"
+        :aria-label="copied ? '{{ label_id_copied|escapejs }}' : '{{ label_copy_id|escapejs }}'"
+        title="{{ label_copy_id }}"
+      >
+        <span class="inline-flex items-center gap-1.5">
+          <span x-show="!copied" class="inline-flex items-center gap-1.5">
+            {% include "components/ui/icon.html" with name="copy" size="sm" %}
+            <span>{{ certificate.credential_id }}</span>
+          </span>
+          <span x-cloak x-show="copied" class="inline-flex items-center gap-1.5">
+            {% include "components/ui/icon.html" with name="check" size="sm" %}
+            {% trans "Copied" %}
+          </span>
+        </span>
+      </button>
+      {% endif %}
+    </div>
+
+    {% if certificate.credential_url %}
+    <div class="mt-4">
+      <a
+        href="{{ certificate.credential_url }}"
+        class="btn btn-outline btn-sm btn-ripple"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="{% blocktrans with title=certificate.title issuer=certificate.issuer %}View {{ title }} certificate from {{ issuer }}{% endblocktrans %}"
+      >
+        {% include "components/ui/icon.html" with name="external" size="sm" %}
+        {% trans "View credential" %}
+      </a>
+    </div>
+    {% endif %}
+  </div>
+
+  {% if certificate.image %}
+  <template x-teleport="body">
+    <div
+      x-show="lightbox"
+      x-cloak
+      x-transition.opacity
+      class="gallery-lightbox"
+      @keydown.escape.window="lightbox && (lightbox = false)"
+      @click="lightbox = false"
+      role="dialog"
+      aria-modal="true"
+      aria-label="{% trans 'Image preview' %}"
+    >
+      <button
+        type="button"
+        class="gallery-lightbox__close"
+        @click.stop="lightbox = false"
+        aria-label="{% trans 'Close' %}"
+      >
+        {% include "components/ui/icon.html" with name="close" %}
+      </button>
+      <img
+        src="{{ certificate.image.url }}"
+        alt="{{ certificate.title }} — {{ certificate.issuer }}"
+        class="gallery-lightbox__img"
+        @click.stop
+      >
+    </div>
+  </template>
+  {% endif %}
+</article>

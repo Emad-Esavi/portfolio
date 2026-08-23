@@ -1,0 +1,44 @@
+{% load i18n %}
+
+<li>
+    <a href="{% url 'home' %}"
+       class="site-nav__link {% if request.resolver_match.url_name == 'home' %}is-active{% endif %}">
+        {% trans "Home" %}
+    </a>
+</li>
+<li>
+    <a href="{% url 'projects' %}"
+       class="site-nav__link {% if request.resolver_match.url_name == 'projects' or request.resolver_match.url_name == 'project_detail' %}is-active{% endif %}">
+        {% trans "Projects" %}
+    </a>
+</li>
+<li>
+    <a href="{% url 'certificates' %}"
+       class="site-nav__link {% if request.resolver_match.url_name == 'certificates' %}is-active{% endif %}">
+        {% trans "Certificates" %}
+    </a>
+</li>
+<li>
+    <a href="{% url 'blog:post_list' %}"
+       class="site-nav__link {% if request.resolver_match.namespace == 'blog' %}is-active{% endif %}">
+        {% trans "Blog" %}
+    </a>
+</li>
+<li>
+    <a href="{% url 'about' %}"
+       class="site-nav__link {% if request.resolver_match.url_name == 'about' %}is-active{% endif %}">
+        {% trans "About" %}
+    </a>
+</li>
+<li>
+    <a href="{% url 'services' %}"
+       class="site-nav__link {% if request.resolver_match.url_name == 'services' %}is-active{% endif %}">
+        {% trans "Services" %}
+    </a>
+</li>
+<li>
+    <a href="{% url 'contact' %}"
+       class="site-nav__link {% if request.resolver_match.url_name == 'contact' %}is-active{% endif %}">
+        {% trans "Contact" %}
+    </a>
+</li>

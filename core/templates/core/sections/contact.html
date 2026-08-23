@@ -1,0 +1,64 @@
+{% load i18n %}
+
+<section id="contact" class="section">
+    <div class="section-container">
+        <div class="section-header section-header--center" data-reveal>
+            <p class="text-eyebrow">{% trans "Contact" %}</p>
+            <h2 class="section-title text-balance">{% trans "Let's Work Together" %}</h2>
+            <p class="section-subtitle">
+                {% trans "Have a project in mind or just want to say hello? I'd love to hear from you." %}
+            </p>
+        </div>
+
+        <div class="mt-16 grid gap-12 lg:grid-cols-2 lg:gap-16">
+            <div data-reveal="right">
+                <h3 class="text-h2">{% trans "Get in Touch" %}</h3>
+                <p class="mt-5 text-body-lg text-muted">
+                    {% trans "Whether you're looking for a backend developer, need help building an API, or want to discuss a new project, feel free to reach out." %}
+                </p>
+
+                <hr class="divider-soft">
+
+                <ul class="space-y-6">
+                    <li class="flex items-start gap-4">
+                        <span class="icon-btn shrink-0 pointer-events-none" aria-hidden="true">
+                            {% include "components/ui/icon.html" with name="mail" size="sm" %}
+                        </span>
+                        <div>
+                            <p class="text-sm font-medium">{% trans "Email" %}</p>
+                            <p class="mt-1 text-muted">
+                                {% if profile.email %}{{ profile.email }}{% else %}hello@example.com{% endif %}
+                            </p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <span class="icon-btn shrink-0 pointer-events-none" aria-hidden="true">
+                            {% include "components/ui/icon.html" with name="phone" size="sm" %}
+                        </span>
+                        <div>
+                            <p class="text-sm font-medium">{% trans "Phone" %}</p>
+                            <p class="mt-1 text-muted">
+                                {% if profile.phone %}{{ profile.phone }}{% else %}+1 (555) 123-4567{% endif %}
+                            </p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <span class="icon-btn shrink-0 pointer-events-none" aria-hidden="true">
+                            {% include "components/ui/icon.html" with name="map-pin" size="sm" %}
+                        </span>
+                        <div>
+                            <p class="text-sm font-medium">{% trans "Location" %}</p>
+                            <p class="mt-1 text-muted">
+                                {% if profile.location %}{{ profile.location }}{% else %}Berlin, Germany{% endif %}
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="glass-card shadow-soft p-6 md:p-8" data-reveal="left" data-delay="2">
+                {% include "core/partials/contact_form.html" with variant="home" form=form %}
+            </div>
+        </div>
+    </div>
+</section>

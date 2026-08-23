@@ -1,0 +1,77 @@
+{% load static tailwind_tags %}
+{% load i18n %}
+<!DOCTYPE html>
+<html
+    lang="{{ LANGUAGE_CODE }}"
+    dir="{% if LANGUAGE_CODE == 'fa' %}rtl{% else %}ltr{% endif %}"
+    data-theme="noir"
+>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="{% block meta_description %}{% endblock %}">
+    <meta name="author" content="Emad">
+    <title>
+        {% block title %}
+            Developer Portfolio
+        {% endblock %}
+    </title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    {% if LANGUAGE_CODE == 'fa' %}
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+    {% endif %}
+
+    <script>
+        (function () {
+            var raw = localStorage.getItem("theme");
+            var theme = (raw === "light" || raw === "ivory") ? "ivory"
+                : (raw === "dark" || raw === "noir") ? "noir"
+                : "noir";
+            document.documentElement.setAttribute("data-theme", theme);
+        })();
+    </script>
+
+    <style>[x-cloak]{display:none!important}</style>
+
+    {% block head %}{% endblock %}
+    {% tailwind_css %}
+</head>
+
+<body class="relative flex min-h-screen flex-col bg-base-100 text-base-content antialiased">
+
+    {% include "components/layout/atmosphere.html" %}
+
+    <div class="relative z-10 flex min-h-screen flex-col">
+        {% include "partials/navbar.html" %}
+
+        <main class="flex-1">
+            {% block content %}
+            {% endblock %}
+        </main>
+
+        {% include "partials/footer.html" %}
+    </div>
+
+    <script src="https://unpkg.com/htmx.org@2.0.7"></script>
+    <script>
+        document.body.addEventListener("htmx:beforeSwap", function (evt) {
+            if (evt.detail.xhr.status === 422 || evt.detail.xhr.status === 429) {
+                evt.detail.shouldSwap = true;
+                evt.detail.isError = false;
+            }
+        });
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="{% static 'core/js/theme.js' %}"></script>
+    <script src="{% static 'core/js/reveal.js' %}"></script>
+    <script src="{% static 'core/js/ripple.js' %}"></script>
+
+    {% block scripts %}
+    {% endblock %}
+
+</body>
+</html>

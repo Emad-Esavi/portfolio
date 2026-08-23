@@ -1,0 +1,45 @@
+/* Custom shadow system — soft depth + restrained accent glows */
+
+@utility shadow-soft {
+  box-shadow:
+    0 1px 2px rgb(0 0 0 / 0.04),
+    0 4px 16px rgb(0 0 0 / 0.08);
+}
+
+@utility shadow-soft-lg {
+  box-shadow:
+    0 2px 4px rgb(0 0 0 / 0.04),
+    0 12px 40px rgb(0 0 0 / 0.14);
+}
+
+@utility shadow-glow-blue {
+  box-shadow: 0 0 32px color-mix(in oklab, var(--color-primary) 28%, transparent);
+}
+
+@utility shadow-glow-pink {
+  box-shadow: 0 0 32px color-mix(in oklab, var(--color-secondary) 24%, transparent);
+}
+
+@utility shadow-focus {
+  box-shadow:
+    0 0 0 3px color-mix(in oklab, var(--color-primary) 35%, transparent),
+    0 0 24px color-mix(in oklab, var(--color-primary) 18%, transparent);
+}
+
+@utility shadow-hover {
+  box-shadow:
+    0 8px 24px rgb(0 0 0 / 0.12),
+    0 0 28px color-mix(in oklab, var(--color-primary) 12%, transparent);
+}
+
+[data-theme="ivory"] .shadow-soft {
+  box-shadow:
+    0 1px 2px rgb(31 31 40 / 0.04),
+    0 8px 24px rgb(31 31 40 / 0.06);
+}
+
+[data-theme="ivory"] .shadow-soft-lg {
+  box-shadow:
+    0 4px 8px rgb(31 31 40 / 0.04),
+    0 16px 48px rgb(31 31 40 / 0.08);
+}

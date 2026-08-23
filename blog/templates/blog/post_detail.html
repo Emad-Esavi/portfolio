@@ -1,0 +1,275 @@
+{% extends "base.html" %}
+{% load i18n blog_extras %}
+
+{% block title %}
+{% if post.seo_title %}{{ post.seo_title }}{% else %}{{ post.title }}{% endif %}
+{% endblock %}
+
+{% block meta_description %}
+{% if post.seo_description %}{{ post.seo_description }}{% else %}{{ post.plain_excerpt }}{% endif %}
+{% endblock %}
+
+{% block head %}
+<link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{{ post.get_absolute_url }}">
+<link rel="alternate" type="application/rss+xml" title="{% trans 'Blog RSS Feed' %}" href="{% url 'blog:feed' %}">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="{% if post.seo_title %}{{ post.seo_title }}{% else %}{{ post.title }}{% endif %}">
+<meta property="og:description" content="{% if post.seo_description %}{{ post.seo_description }}{% else %}{{ post.plain_excerpt }}{% endif %}">
+<meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ post.get_absolute_url }}">
+{% if post.image_url %}
+<meta property="og:image" content="{% if post.image_url|slice:':4' == 'http' %}{{ post.image_url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{{ post.image_url }}{% endif %}">
+{% endif %}
+{% if post.published_at %}
+<meta property="article:published_time" content="{{ post.published_at|date:'c' }}">
+{% endif %}
+<meta property="article:modified_time" content="{{ post.updated_at|date:'c' }}">
+{% if post.category %}
+<meta property="article:section" content="{{ post.category.name }}">
+{% endif %}
+{% for tag in post.tags.all %}
+<meta property="article:tag" content="{{ tag.name }}">
+{% endfor %}
+
+<meta name="twitter:card" content="{% if post.image_url %}summary_large_image{% else %}summary{% endif %}">
+<meta name="twitter:title" content="{% if post.seo_title %}{{ post.seo_title }}{% else %}{{ post.title }}{% endif %}">
+<meta name="twitter:description" content="{% if post.seo_description %}{{ post.seo_description }}{% else %}{{ post.plain_excerpt }}{% endif %}">
+{% if post.image_url %}
+<meta name="twitter:image" content="{% if post.image_url|slice:':4' == 'http' %}{{ post.image_url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{{ post.image_url }}{% endif %}">
+{% endif %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{ post.title|escapejs }}",
+  "description": "{{ post.plain_excerpt|escapejs }}",
+  "datePublished": "{{ post.published_at|date:'c'|default:'' }}",
+  "dateModified": "{{ post.updated_at|date:'c' }}",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ request.scheme }}://{{ request.get_host }}{{ post.get_absolute_url }}"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "{% if post.author_name %}{{ post.author_name|escapejs }}{% elif profile %}{{ profile.full_name|escapejs }}{% else %}Emad{% endif %}"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "{% if profile %}{{ profile.full_name|escapejs }}{% else %}Emad{% endif %}"
+  }{% if post.image_url %},
+  "image": "{% if post.image_url|slice:':4' == 'http' %}{{ post.image_url }}{% else %}{{ request.scheme }}://{{ request.get_host }}{{ post.image_url }}{% endif %}"{% endif %}{% if post.category %},
+  "articleSection": "{{ post.category.name|escapejs }}"{% endif %}
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<article itemscope itemtype="https://schema.org/BlogPosting">
+<section class="page-hero">
+    <div class="section-container">
+        <nav aria-label="{% trans 'Breadcrumb' %}">
+            <ol class="page-hero__breadcrumb">
+                <li><a href="{% url 'home' %}">{% trans "Home" %}</a></li>
+                <li class="page-hero__breadcrumb-sep" aria-hidden="true">/</li>
+                <li><a href="{% url 'blog:post_list' %}">{% trans "Blog" %}</a></li>
+                {% if post.category %}
+                <li class="page-hero__breadcrumb-sep" aria-hidden="true">/</li>
+                <li><a href="{{ post.category.get_absolute_url }}">{{ post.category.name }}</a></li>
+                {% endif %}
+                <li class="page-hero__breadcrumb-sep" aria-hidden="true">/</li>
+                <li class="page-hero__breadcrumb-current" aria-current="page">{{ post.title }}</li>
+            </ol>
+        </nav>
+
+        <div class="mx-auto max-w-3xl" data-reveal>
+            {% if not post.is_published %}
+            <div class="alert-premium alert-premium--warning mb-6">
+                {% trans "This post is a draft and is only visible to staff." %}
+            </div>
+            {% endif %}
+
+            <div class="mb-5 flex flex-wrap items-center gap-2">
+                {% if post.category %}
+                <a href="{{ post.category.get_absolute_url }}" class="badge-soft badge-soft--primary">
+                    {% include "components/ui/icon.html" with name="folder" size="sm" %}
+                    {{ post.category.name }}
+                </a>
+                {% endif %}
+                {% if post.is_featured %}
+                <span class="badge-soft badge-soft--accent">{% trans "Featured" %}</span>
+                {% endif %}
+            </div>
+
+            <h1 class="text-display-2 text-balance" itemprop="headline">{{ post.title }}</h1>
+
+            {% if post.excerpt %}
+            <p class="mt-5 text-body-lg text-muted" itemprop="description">{{ post.excerpt }}</p>
+            {% endif %}
+
+            <div class="post-meta mt-6">
+                <span class="post-meta__item" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    {% include "components/ui/icon.html" with name="user" size="sm" %}
+                    <span itemprop="name">
+                        {% if post.author_name %}{{ post.author_name }}{% elif profile %}{{ profile.full_name }}{% else %}{% trans "Author" %}{% endif %}
+                    </span>
+                </span>
+                {% if post.published_at %}
+                <time class="post-meta__item" datetime="{{ post.published_at|date:'c' }}" itemprop="datePublished">
+                    {% include "components/ui/icon.html" with name="calendar" size="sm" %}
+                    {{ post.published_at|date:"F j, Y" }}
+                </time>
+                {% endif %}
+                <span class="post-meta__item">
+                    {% include "components/ui/icon.html" with name="clock" size="sm" %}
+                    {% blocktrans count minutes=post.reading_time %}{{ minutes }} min read{% plural %}{{ minutes }} min read{% endblocktrans %}
+                </span>
+                <span class="post-meta__item">
+                    {% include "components/ui/icon.html" with name="eye" size="sm" %}
+                    {% blocktrans count views=post.view_count %}{{ views }} view{% plural %}{{ views }} views{% endblocktrans %}
+                </span>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% if post.image_url %}
+<section class="section pt-0 pb-0">
+    <div class="section-container">
+        <div class="mx-auto max-w-4xl" data-reveal>
+            <figure class="card-image relative aspect-video overflow-hidden rounded-image border border-base-content/10">
+                <img
+                    src="{{ post.image_url }}"
+                    alt="{{ post.featured_image_alt|default:post.title }}"
+                    class="h-full w-full object-cover"
+                    loading="eager"
+                    itemprop="image"
+                >
+            </figure>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<section class="section">
+    <div class="section-container">
+        <div class="mx-auto max-w-3xl" data-reveal>
+            <div class="markdown-content" itemprop="articleBody">
+                {{ post.content|markdownify }}
+            </div>
+
+            {% if post.tags.all %}
+            <div class="mt-12 flex flex-wrap items-center gap-2">
+                <span class="post-meta__item">
+                    {% include "components/ui/icon.html" with name="tag" size="sm" %}
+                    {% trans "Tags" %}:
+                </span>
+                {% for tag in post.tags.all %}
+                <a href="{{ tag.get_absolute_url }}" class="badge-soft">{{ tag.name }}</a>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% with share_url=request.build_absolute_uri %}
+            {% trans "Copy link" as label_copy %}
+            {% trans "Link copied" as label_copied %}
+            <div
+                class="post-share mt-12"
+                data-reveal
+                x-data="{
+                    copied: false,
+                    url: '{{ share_url|escapejs }}',
+                    async copyLink() {
+                        try {
+                            await navigator.clipboard.writeText(this.url);
+                        } catch (e) {
+                            const input = document.createElement('input');
+                            input.value = this.url;
+                            document.body.appendChild(input);
+                            input.select();
+                            document.execCommand('copy');
+                            input.remove();
+                        }
+                        this.copied = true;
+                        setTimeout(() => this.copied = false, 2000);
+                    }
+                }"
+            >
+                <p class="text-eyebrow mb-4">{% trans "Share" %}</p>
+                <p class="mb-5 text-body text-muted">
+                    {% trans "Pass this post along on Telegram, WhatsApp, or copy the link." %}
+                </p>
+                <div class="post-share__actions">
+                    <a
+                        href="https://t.me/share/url?url={{ share_url|urlencode }}&text={{ post.title|urlencode }}"
+                        class="btn btn-outline btn-sm btn-ripple"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        {% include "components/ui/icon.html" with name="telegram" size="sm" %}
+                        {% trans "Telegram" %}
+                    </a>
+                    <a
+                        href="https://api.whatsapp.com/send?text={{ post.title|urlencode }}%20{{ share_url|urlencode }}"
+                        class="btn btn-outline btn-sm btn-ripple"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        {% include "components/ui/icon.html" with name="whatsapp" size="sm" %}
+                        {% trans "WhatsApp" %}
+                    </a>
+                    <button
+                        type="button"
+                        class="btn btn-glass btn-sm btn-ripple"
+                        @click="copyLink()"
+                        :aria-label="copied ? '{{ label_copied|escapejs }}' : '{{ label_copy|escapejs }}'"
+                    >
+                        <span x-show="!copied" class="inline-flex items-center gap-2">
+                            {% include "components/ui/icon.html" with name="link" size="sm" %}
+                            {% trans "Copy link" %}
+                        </span>
+                        <span x-cloak x-show="copied" class="inline-flex items-center gap-2">
+                            {% include "components/ui/icon.html" with name="check" size="sm" %}
+                            {% trans "Copied" %}
+                        </span>
+                    </button>
+                </div>
+            </div>
+            {% endwith %}
+        </div>
+    </div>
+</section>
+</article>
+
+{% if related_posts %}
+<section class="section pt-0">
+    <div class="section-container">
+        <div class="section-header section-header--center mb-12" data-reveal>
+            <p class="text-eyebrow">{% trans "Keep Reading" %}</p>
+            <h2 class="section-title text-balance">{% trans "Related Posts" %}</h2>
+        </div>
+        <div class="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+            {% for related in related_posts %}
+                {% include "blog/partials/post_card.html" with post=related %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<section class="section pt-0">
+    <div class="section-container">
+        <div class="glass-card shadow-soft mx-auto max-w-3xl p-8 text-center md:p-12" data-reveal>
+            <p class="text-eyebrow mb-4">{% trans "More Writing" %}</p>
+            <h2 class="text-h2 mb-4">{% trans "Explore the full blog" %}</h2>
+            <p class="text-body text-muted mb-8">
+                {% trans "Browse more articles on backend systems, APIs, and building reliable products." %}
+            </p>
+            <a href="{% url 'blog:post_list' %}" class="btn btn-primary btn-ripple">
+                {% trans "All Posts" %}
+                {% include "components/ui/icon.html" with name="arrow-right" size="sm" %}
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

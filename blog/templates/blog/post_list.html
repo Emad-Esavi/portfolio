@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}
+{% if active_category %}{{ active_category.name }} — {% trans "Blog" %}
+{% elif active_tag %}#{{ active_tag.name }} — {% trans "Blog" %}
+{% elif search_query %}{% blocktrans %}Search: {{ search_query }}{% endblocktrans %} — {% trans "Blog" %}
+{% else %}{% trans "Blog" %}{% endif %}
+{% endblock %}
+
+{% block meta_description %}
+{% if active_category and active_category.description %}{{ active_category.description }}
+{% else %}{% trans "Articles, notes, and write-ups on backend development, APIs, and building reliable systems." %}{% endif %}
+{% endblock %}
+
+{% block head %}
+<link rel="alternate" type="application/rss+xml" title="{% trans 'Blog RSS Feed' %}" href="{% url 'blog:feed' %}">
+<link rel="canonical" href="{{ request.build_absolute_uri }}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{% if active_category %}{{ active_category.name }}{% else %}{% trans 'Blog' %}{% endif %}">
+<meta property="og:description" content="{% if active_category and active_category.description %}{{ active_category.description }}{% else %}{% trans 'Articles, notes, and write-ups on backend development, APIs, and building reliable systems.' %}{% endif %}">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<meta name="twitter:card" content="summary">
+{% endblock %}
+
+{% block content %}
+{% trans "Writing" as ph_eyebrow %}
+{% include "components/layout/page_header.html" with eyebrow=ph_eyebrow title=list_title subtitle=list_subtitle crumb_label=list_title align="center" %}
+
+<section class="section pt-0">
+    <div class="section-container">
+
+        {# Search #}
+        <form method="get" action="{% url 'blog:post_list' %}" class="blog-search mb-10" data-reveal role="search">
+            <label class="sr-only" for="blog-search-q">{% trans "Search posts" %}</label>
+            <div class="blog-search__field">
+                <span class="blog-search__icon" aria-hidden="true">
+                    {% include "components/ui/icon.html" with name="search" size="sm" %}
+                </span>
+                <input
+                    type="search"
+                    id="blog-search-q"
+                    name="q"
+                    value="{{ search_query }}"
+                    placeholder="{% trans 'Search articles…' %}"
+                    class="input-premium blog-search__input"
+                    autocomplete="off"
+                >
+                <button type="submit" class="btn btn-primary btn-sm btn-ripple">
+                    {% trans "Search" %}
+                </button>
+            </div>
+            {% if search_query %}
+            <p class="mt-3 text-sm text-muted">
+                {% blocktrans count counter=page_obj.paginator.count %}{{ counter }} result for “{{ search_query }}”{% plural %}{{ counter }} results for “{{ search_query }}”{% endblocktrans %}
+                · <a href="{% url 'blog:post_list' %}" class="text-primary hover:underline">{% trans "Clear" %}</a>
+            </p>
+            {% endif %}
+        </form>
+
+        {# Category filter pills #}
+        {% if categories and not search_query and not active_tag %}
+        <div class="filter-pills mb-12" data-reveal>
+            <a href="{% url 'blog:post_list' %}"
+               class="filter-pill {% if not active_category %}is-active{% endif %}">
+                {% trans "All" %}
+            </a>
+            {% for cat in categories %}
+            <a href="{{ cat.get_absolute_url }}"
+               class="filter-pill {% if active_category and active_category.pk == cat.pk %}is-active{% endif %}">
+                {{ cat.name }}
+            </a>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {# Featured posts (list page only) #}
+        {% if featured_posts %}
+        <div class="mb-14">
+            <div class="section-header mb-8" data-reveal>
+                <p class="text-eyebrow">{% trans "Highlights" %}</p>
+                <h2 class="section-title text-balance">{% trans "Featured Posts" %}</h2>
+            </div>
+            <div class="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+                {% for post in featured_posts %}
+                    {% include "blog/partials/post_card.html" with post=post %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        {# Post grid #}
+        {% if posts %}
+        <div class="grid gap-8 md:grid-cols-2">
+            {% for post in posts %}
+                {% include "blog/partials/post_card.html" with post=post %}
+            {% endfor %}
+        </div>
+
+        {% if page_obj.paginator.num_pages > 1 %}
+        <div class="mt-14 flex justify-center" data-reveal>
+            {% include "components/ui/pagination.html" with page_obj=page_obj %}
+        </div>
+        {% endif %}
+        {% else %}
+        <div class="empty-state" data-reveal>
+            <p class="empty-state__title">{% trans "No posts yet" %}</p>
+            <p class="empty-state__text">
+                {% if search_query %}
+                    {% trans "No posts match your search. Try a different query." %}
+                {% elif active_category or active_tag %}
+                    {% trans "No published posts in this filter yet." %}
+                {% else %}
+                    {% trans "Posts will appear here once they are published in the Django admin." %}
+                {% endif %}
+            </p>
+            {% if search_query or active_category or active_tag %}
+            <a href="{% url 'blog:post_list' %}" class="btn btn-glass btn-sm btn-ripple mt-6">
+                {% trans "View All Posts" %}
+            </a>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <div class="mt-12 flex justify-center" data-reveal>
+            <a href="{% url 'blog:feed' %}" class="btn btn-outline btn-sm btn-ripple">
+                {% trans "RSS Feed" %}
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}
+{% if profile.seo_title %}{{ profile.seo_title }}{% else %}{% trans "Home" %}{% endif %}
+{% endblock %}
+
+{% block meta_description %}
+{% if profile.seo_description %}{{ profile.seo_description }}{% elif profile.short_bio %}{{ profile.short_bio }}{% endif %}
+{% endblock %}
+
+{% block content %}
+
+    {% include "core/sections/hero.html" %}
+    {% include "core/sections/tech_stack.html" %}
+    {% include "core/sections/about.html" %}
+    {% include "core/sections/projects.html" %}
+    {% include "core/sections/experience.html" %}
+    {% include "core/sections/certificates.html" %}
+    {% include "core/sections/services.html" %}
+    {% include "core/sections/blog_teaser.html" %}
+    {% include "core/sections/contact.html" %}
+
+{% endblock %}

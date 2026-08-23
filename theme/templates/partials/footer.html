@@ -1,0 +1,48 @@
+{% load i18n %}
+
+<footer class="site-footer">
+    <div class="site-footer__inner">
+        <div class="site-footer__grid">
+            <div>
+                <p class="site-footer__brand">Portfolio</p>
+                <p class="site-footer__copy">
+                    {% trans "Crafting reliable backend systems and refined digital experiences." %}
+                </p>
+            </div>
+
+            <div>
+                <p class="site-footer__heading">{% trans "Navigate" %}</p>
+                <ul class="site-footer__links">
+                    <li><a href="{% url 'home' %}">{% trans "Home" %}</a></li>
+                    <li><a href="{% url 'projects' %}">{% trans "Projects" %}</a></li>
+                    <li><a href="{% url 'certificates' %}">{% trans "Certificates" %}</a></li>
+                    <li><a href="{% url 'blog:post_list' %}">{% trans "Blog" %}</a></li>
+                    <li><a href="{% url 'about' %}">{% trans "About" %}</a></li>
+                    <li><a href="{% url 'services' %}">{% trans "Services" %}</a></li>
+                    <li><a href="{% url 'contact' %}">{% trans "Contact" %}</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <p class="site-footer__heading">{% trans "Connect" %}</p>
+                <ul class="site-footer__links">
+                    {% if profile.github %}
+                    <li><a href="{{ profile.github }}" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                    {% endif %}
+                    {% if profile.linkedin %}
+                    <li><a href="{{ profile.linkedin }}" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                    {% endif %}
+                    {% if profile.email %}
+                    <li><a href="mailto:{{ profile.email }}">{{ profile.email }}</a></li>
+                    {% else %}
+                    <li><a href="{% url 'contact' %}">{% trans "Get in touch" %}</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="site-footer__bottom">
+            © {% now "Y" %} {% trans "All rights reserved." %}
+        </div>
+    </div>
+</footer>

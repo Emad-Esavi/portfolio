@@ -1,0 +1,11 @@
+<div class="section-header {% if align == 'center' or not align %}section-header--center{% endif %} {{ class|default:'' }}">
+  {% if eyebrow %}
+  <p class="text-eyebrow">{{ eyebrow }}</p>
+  {% endif %}
+  {% if title %}
+  <h2 class="section-title text-balance">{{ title }}</h2>
+  {% endif %}
+  {% if subtitle %}
+  <p class="section-subtitle">{{ subtitle }}</p>
+  {% endif %}
+</div>

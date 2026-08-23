@@ -1,0 +1,92 @@
+/* DaisyUI v5 custom themes — noir (dark, default) & ivory (light) */
+
+@plugin "daisyui/theme" {
+  name: "noir";
+  default: true;
+  prefersdark: true;
+  color-scheme: "dark";
+
+  --color-base-100: #09090B;
+  --color-base-200: #101014;
+  --color-base-300: #17171F;
+  --color-base-content: #F3F3F7;
+
+  --color-primary: #4CC9FF;
+  --color-primary-content: #09090B;
+
+  --color-secondary: #FF4FD8;
+  --color-secondary-content: #09090B;
+
+  --color-accent: #8B5CF6;
+  --color-accent-content: #F3F3F7;
+
+  --color-neutral: #292933;
+  --color-neutral-content: #F3F3F7;
+
+  --color-info: #4CC9FF;
+  --color-info-content: #09090B;
+
+  --color-success: #39D98A;
+  --color-success-content: #09090B;
+
+  --color-warning: #FACC15;
+  --color-warning-content: #09090B;
+
+  --color-error: #F43F5E;
+  --color-error-content: #F3F3F7;
+
+  --radius-selector: 1rem;
+  --radius-field: 1rem;
+  --radius-box: 1.5rem;
+
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@plugin "daisyui/theme" {
+  name: "ivory";
+  prefersdark: false;
+  color-scheme: "light";
+
+  --color-base-100: #F5F4F8;
+  --color-base-200: #FFFFFF;
+  --color-base-300: #ECEAF3;
+  --color-base-content: #1F1F28;
+
+  --color-primary: #6D5EF7;
+  --color-primary-content: #FFFFFF;
+
+  --color-secondary: #FF4FD8;
+  --color-secondary-content: #FFFFFF;
+
+  --color-accent: #4CC9FF;
+  --color-accent-content: #1F1F28;
+
+  --color-neutral: #6E6B7B;
+  --color-neutral-content: #FFFFFF;
+
+  --color-info: #4CC9FF;
+  --color-info-content: #1F1F28;
+
+  --color-success: #39D98A;
+  --color-success-content: #1F1F28;
+
+  --color-warning: #FACC15;
+  --color-warning-content: #1F1F28;
+
+  --color-error: #F43F5E;
+  --color-error-content: #FFFFFF;
+
+  --radius-selector: 1rem;
+  --radius-field: 1rem;
+  --radius-box: 1.5rem;
+
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}

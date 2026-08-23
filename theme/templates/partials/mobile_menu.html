@@ -1,0 +1,86 @@
+{% load i18n %}
+
+<div
+    x-show="mobileOpen"
+    x-cloak
+    x-transition:enter="transition ease-out duration-200"
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100"
+    x-transition:leave="transition ease-in duration-150"
+    x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0"
+    class="mobile-menu-panel lg:hidden"
+    @keydown.escape.window="mobileOpen = false"
+    role="dialog"
+    aria-modal="true"
+    aria-label="{% trans 'Mobile navigation' %}"
+>
+    <div class="mobile-menu-panel__header">
+        <a href="{% url 'home' %}" class="site-nav__brand" @click="mobileOpen = false">Portfolio</a>
+        <button
+            type="button"
+            class="icon-btn"
+            @click="mobileOpen = false"
+            aria-label="{% trans 'Close navigation menu' %}"
+        >
+            {% include "components/ui/icon.html" with name="close" %}
+        </button>
+    </div>
+
+    <ul class="mobile-menu-panel__links">
+        <li>
+            <a href="{% url 'home' %}"
+               class="{% if request.resolver_match.url_name == 'home' %}is-active{% endif %}"
+               @click="mobileOpen = false">
+                {% trans "Home" %}
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'projects' %}"
+               class="{% if request.resolver_match.url_name == 'projects' or request.resolver_match.url_name == 'project_detail' %}is-active{% endif %}"
+               @click="mobileOpen = false">
+                {% trans "Projects" %}
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'certificates' %}"
+               class="{% if request.resolver_match.url_name == 'certificates' %}is-active{% endif %}"
+               @click="mobileOpen = false">
+                {% trans "Certificates" %}
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'blog:post_list' %}"
+               class="{% if request.resolver_match.namespace == 'blog' %}is-active{% endif %}"
+               @click="mobileOpen = false">
+                {% trans "Blog" %}
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'about' %}"
+               class="{% if request.resolver_match.url_name == 'about' %}is-active{% endif %}"
+               @click="mobileOpen = false">
+                {% trans "About" %}
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'services' %}"
+               class="{% if request.resolver_match.url_name == 'services' %}is-active{% endif %}"
+               @click="mobileOpen = false">
+                {% trans "Services" %}
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'contact' %}"
+               class="{% if request.resolver_match.url_name == 'contact' %}is-active{% endif %}"
+               @click="mobileOpen = false">
+                {% trans "Contact" %}
+            </a>
+        </li>
+    </ul>
+
+    <div class="mobile-menu-panel__actions">
+        {% include "partials/theme_switcher.html" %}
+        {% include "partials/language_switcher.html" %}
+    </div>
+</div>

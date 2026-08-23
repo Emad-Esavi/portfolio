@@ -1,0 +1,12 @@
+<div class="overflow-x-auto rounded-(--radius-box) border border-base-content/10 {{ class|default:'' }}">
+  <table class="table-premium">
+    {% if headers_html %}
+    <thead>
+      <tr>{{ headers_html|safe }}</tr>
+    </thead>
+    {% endif %}
+    <tbody>
+      {{ rows_html|safe }}
+    </tbody>
+  </table>
+</div>

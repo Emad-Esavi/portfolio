@@ -1,0 +1,13 @@
+<div class="card-premium {{ class|default:'' }}">
+  {% if title %}
+  <div class="p-6 pb-0">
+    <h3 class="text-h3">{{ title }}</h3>
+  </div>
+  {% endif %}
+  {% if body %}
+  <div class="p-6 {% if title %}pt-3{% endif %}">
+    <p class="text-muted text-body">{{ body }}</p>
+  </div>
+  {% endif %}
+  {{ slot|safe }}
+</div>

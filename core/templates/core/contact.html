@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Contact" %}{% endblock %}
+
+{% block meta_description %}
+{% trans "Get in touch about backend development, APIs, or a new project collaboration." %}
+{% endblock %}
+
+{% block content %}
+{% trans "Contact" as ph_eyebrow %}
+{% trans "Let's Work Together" as ph_title %}
+{% trans "Have a project in mind or just want to say hello? I'd love to hear from you." as ph_subtitle %}
+{% include "components/layout/page_header.html" with eyebrow=ph_eyebrow title=ph_title subtitle=ph_subtitle crumb_label=ph_eyebrow align="center" %}
+
+<section class="section pt-0">
+    <div class="section-container">
+        <div class="grid gap-12 lg:grid-cols-2 lg:gap-16">
+            <div data-reveal="right">
+                <h2 class="text-h2">{% trans "Get in Touch" %}</h2>
+                <p class="mt-5 text-body-lg text-muted">
+                    {% trans "Whether you're looking for a backend developer, need help building an API, or want to discuss a new project, feel free to reach out." %}
+                </p>
+
+                <div class="mt-8 space-y-4">
+                    <div class="contact-info-card">
+                        <span class="icon-btn shrink-0 pointer-events-none" aria-hidden="true">
+                            {% include "components/ui/icon.html" with name="mail" size="sm" %}
+                        </span>
+                        <div>
+                            <p class="text-sm font-medium">{% trans "Email" %}</p>
+                            <p class="mt-1 text-muted">
+                                {% if profile and profile.email %}
+                                <a href="mailto:{{ profile.email }}" class="hover:text-primary transition-colors">{{ profile.email }}</a>
+                                {% else %}
+                                hello@example.com
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-card">
+                        <span class="icon-btn shrink-0 pointer-events-none" aria-hidden="true">
+                            {% include "components/ui/icon.html" with name="phone" size="sm" %}
+                        </span>
+                        <div>
+                            <p class="text-sm font-medium">{% trans "Phone" %}</p>
+                            <p class="mt-1 text-muted">
+                                {% if profile and profile.phone %}{{ profile.phone }}{% else %}+1 (555) 123-4567{% endif %}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-card">
+                        <span class="icon-btn shrink-0 pointer-events-none" aria-hidden="true">
+                            {% include "components/ui/icon.html" with name="map-pin" size="sm" %}
+                        </span>
+                        <div>
+                            <p class="text-sm font-medium">{% trans "Location" %}</p>
+                            <p class="mt-1 text-muted">
+                                {% if profile and profile.location %}{{ profile.location }}{% else %}Berlin, Germany{% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                {% if profile.github or profile.linkedin or profile.instagram or profile.x %}
+                <div class="mt-8">
+                    <p class="text-eyebrow mb-4">{% trans "Social" %}</p>
+                    <div class="flex flex-wrap gap-3">
+                        {% if profile.github %}
+                        <a href="{{ profile.github }}" class="btn btn-outline btn-sm btn-ripple" target="_blank" rel="noopener noreferrer">
+                            {% include "components/ui/icon.html" with name="github" size="sm" %}
+                            GitHub
+                        </a>
+                        {% endif %}
+                        {% if profile.linkedin %}
+                        <a href="{{ profile.linkedin }}" class="btn btn-outline btn-sm btn-ripple" target="_blank" rel="noopener noreferrer">
+                            LinkedIn
+                        </a>
+                        {% endif %}
+                        {% if profile.instagram %}
+                        <a href="{{ profile.instagram }}" class="btn btn-outline btn-sm btn-ripple" target="_blank" rel="noopener noreferrer">
+                            Instagram
+                        </a>
+                        {% endif %}
+                        {% if profile.x %}
+                        <a href="{{ profile.x }}" class="btn btn-outline btn-sm btn-ripple" target="_blank" rel="noopener noreferrer">
+                            X
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="glass-card shadow-soft p-6 md:p-8" data-reveal="left" data-delay="2">
+                {% include "core/partials/contact_form.html" with variant="page" form=form %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="section-container">
+        <div class="section-header section-header--center mb-10" data-reveal>
+            <p class="text-eyebrow">{% trans "FAQ" %}</p>
+            <h2 class="section-title text-balance">{% trans "Common Questions" %}</h2>
+        </div>
+
+        <div class="faq-list mx-auto max-w-3xl" x-data="{ open: 1 }">
+            <div class="faq-item" data-reveal data-delay="1">
+                <button type="button" class="faq-item__trigger" @click="open = open === 1 ? null : 1" :aria-expanded="open === 1">
+                    {% trans "How quickly do you respond?" %}
+                    <span class="faq-item__icon" :class="open === 1 && 'is-open'">
+                        {% include "components/ui/icon.html" with name="chevron-down" size="sm" %}
+                    </span>
+                </button>
+                <div class="faq-item__body" x-show="open === 1" x-cloak x-transition>
+                    {% trans "I typically reply within 1–2 business days. For urgent project inquiries, include deadlines in your message so I can prioritize accordingly." %}
+                </div>
+            </div>
+
+            <div class="faq-item" data-reveal data-delay="2">
+                <button type="button" class="faq-item__trigger" @click="open = open === 2 ? null : 2" :aria-expanded="open === 2">
+                    {% trans "What kind of projects do you take on?" %}
+                    <span class="faq-item__icon" :class="open === 2 && 'is-open'">
+                        {% include "components/ui/icon.html" with name="chevron-down" size="sm" %}
+                    </span>
+                </button>
+                <div class="faq-item__body" x-show="open === 2" x-cloak x-transition>
+                    {% trans "Backend systems, REST APIs, Django and Laravel applications, database design, and integrations. I also build personal websites and shop websites, and can connect your custom frontend to a Laravel or Django backend. I'm happy to discuss both greenfield builds and improvements to existing products." %}
+                </div>
+            </div>
+
+            <div class="faq-item" data-reveal data-delay="3">
+                <button type="button" class="faq-item__trigger" @click="open = open === 3 ? null : 3" :aria-expanded="open === 3">
+                    {% trans "Do you work remotely?" %}
+                    <span class="faq-item__icon" :class="open === 3 && 'is-open'">
+                        {% include "components/ui/icon.html" with name="chevron-down" size="sm" %}
+                    </span>
+                </button>
+                <div class="faq-item__body" x-show="open === 3" x-cloak x-transition>
+                    {% trans "Yes — I collaborate remotely with clients worldwide, using clear async communication and regular check-ins." %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

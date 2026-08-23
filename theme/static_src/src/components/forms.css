@@ -1,0 +1,109 @@
+/* Form controls */
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: color-mix(in oklab, currentColor 80%, transparent);
+}
+
+.form-hint {
+  font-size: 0.75rem;
+  color: color-mix(in oklab, currentColor 50%, transparent);
+}
+
+.form-error {
+  font-size: 0.75rem;
+  color: var(--color-error);
+}
+
+.form-alert {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-field);
+  font-size: 0.875rem;
+}
+
+.form-alert--error {
+  color: var(--color-error);
+  background: color-mix(in oklab, var(--color-error) 12%, transparent);
+  border: 1px solid color-mix(in oklab, var(--color-error) 30%, transparent);
+}
+
+.input-premium.is-invalid,
+.textarea-premium.is-invalid {
+  border-color: color-mix(in oklab, var(--color-error) 55%, transparent);
+}
+
+.input,
+.textarea,
+.select {
+  border-radius: var(--radius-field);
+  border: 1px solid color-mix(in oklab, var(--color-base-content) 12%, transparent);
+  background: color-mix(in oklab, var(--color-base-200) 80%, transparent);
+  transition:
+    border-color var(--duration-fast) ease,
+    box-shadow var(--duration-fast) ease,
+    background-color var(--duration-fast) ease;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  outline: none;
+  border-color: color-mix(in oklab, var(--color-primary) 55%, transparent);
+  box-shadow:
+    0 0 0 3px color-mix(in oklab, var(--color-primary) 20%, transparent),
+    0 0 20px color-mix(in oklab, var(--color-primary) 10%, transparent);
+  background: var(--color-base-200);
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: color-mix(in oklab, currentColor 40%, transparent);
+}
+
+.input-premium,
+.textarea-premium,
+.select-premium {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  border-radius: var(--radius-field);
+  border: 1px solid color-mix(in oklab, var(--color-base-content) 12%, transparent);
+  background: color-mix(in oklab, var(--color-base-200) 80%, transparent);
+  color: var(--color-base-content);
+  transition:
+    border-color var(--duration-fast) ease,
+    box-shadow var(--duration-fast) ease,
+    background-color var(--duration-fast) ease;
+}
+
+.input-premium:focus,
+.textarea-premium:focus,
+.select-premium:focus {
+  outline: none;
+  border-color: color-mix(in oklab, var(--color-primary) 55%, transparent);
+  box-shadow:
+    0 0 0 3px color-mix(in oklab, var(--color-primary) 20%, transparent);
+}
+
+.textarea-premium {
+  min-height: 9rem;
+  resize: vertical;
+}
+
+[data-theme="ivory"] .input,
+[data-theme="ivory"] .textarea,
+[data-theme="ivory"] .select,
+[data-theme="ivory"] .input-premium,
+[data-theme="ivory"] .textarea-premium,
+[data-theme="ivory"] .select-premium {
+  background: var(--color-base-200);
+  border-color: color-mix(in oklab, var(--color-base-content) 10%, transparent);
+}

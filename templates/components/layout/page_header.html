@@ -1,0 +1,30 @@
+{# Expected: eyebrow, title, subtitle, crumb_label, align (start|center), class #}
+{% load i18n %}
+
+<header class="page-hero {{ class|default:'' }}">
+  <div class="section-container">
+    <nav aria-label="{% trans 'Breadcrumb' %}">
+      <ol class="page-hero__breadcrumb">
+        <li>
+          <a href="{% url 'home' %}">{% trans "Home" %}</a>
+        </li>
+        <li class="page-hero__breadcrumb-sep" aria-hidden="true">/</li>
+        <li class="page-hero__breadcrumb-current" aria-current="page">
+          {{ crumb_label|default:title }}
+        </li>
+      </ol>
+    </nav>
+
+    <div class="page-hero__header {% if align == 'center' or not align %}page-hero__header--center{% endif %}" data-reveal>
+      {% if eyebrow %}
+      <p class="text-eyebrow mb-4">{{ eyebrow }}</p>
+      {% endif %}
+      {% if title %}
+      <h1 class="section-title text-balance mb-5">{{ title }}</h1>
+      {% endif %}
+      {% if subtitle %}
+      <p class="section-subtitle">{{ subtitle }}</p>
+      {% endif %}
+    </div>
+  </div>
+</header>

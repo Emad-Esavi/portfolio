@@ -1,0 +1,28 @@
+{% load i18n %}
+
+{% if certificates %}
+<section id="certificates" class="section">
+    <div class="section-container">
+        <div class="section-header section-header--center" data-reveal>
+            <p class="text-eyebrow">{% trans "Credentials" %}</p>
+            <h2 class="section-title text-balance">{% trans "Certificates" %}</h2>
+            <p class="section-subtitle">
+                {% trans "Verified credentials and courses that shaped my engineering craft." %}
+            </p>
+        </div>
+
+        <div class="mt-16 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+            {% for certificate in certificates %}
+                {% include "components/ui/certificate_card.html" with certificate=certificate delay=forloop.counter %}
+            {% endfor %}
+        </div>
+
+        <div class="mt-16 text-center" data-reveal>
+            <a href="{% url 'certificates' %}" class="btn btn-glass btn-wide btn-ripple">
+                {% trans "View All Certificates" %}
+                {% include "components/ui/icon.html" with name="arrow-right" size="sm" %}
+            </a>
+        </div>
+    </div>
+</section>
+{% endif %}

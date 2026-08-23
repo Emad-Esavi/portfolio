@@ -1,0 +1,20 @@
+New contact message received
+============================
+
+Submitted: {{ submitted_at|date:"F j, Y" }} at {{ submitted_at|time:"g:i A" }}
+
+From: {{ contact_message.name }} <{{ contact_message.email }}>
+{% if contact_message.company %}Company: {{ contact_message.company }}
+{% endif %}{% if contact_message.phone %}Phone: {{ contact_message.phone }}
+{% endif %}
+Subject: {{ subject_display }}
+
+Message:
+--------
+{{ contact_message.message }}
+
+---
+Message ID: #{{ contact_message.pk }}
+{% if contact_message.ip_address %}IP address: {{ contact_message.ip_address }}
+{% endif %}
+Reply directly to {{ contact_message.email }} to respond.

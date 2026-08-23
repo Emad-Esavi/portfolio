@@ -1,0 +1,803 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: portfolio\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-12 00:00+0000\n"
+"PO-Revision-Date: 2026-08-12 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: fa\n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "+1 555 000 0000 (optional)"
+msgstr "+۹۸ ۹۱۲ ۰۰۰ ۰۰۰ (اختیاری)"
+
+msgid "A clear, collaborative process from discovery to delivery."
+msgstr "فرآیندی شفاف و مشارکتی از کشف نیاز تا تحویل."
+
+msgid ""
+"A closer look at who I am, what I build, and the path that brought me here."
+msgstr ""
+"نگاهی نزدیک‌تر به اینکه من کی هستم، چه می‌سازم و مسیری که مرا به اینجا "
+"رسانده."
+
+msgid ""
+"A condensed look at recent roles. Full timeline lives on the home page."
+msgstr "نگاهی فشرده به نقش‌های اخیر. خط زمانی کامل در صفحه اصلی است."
+
+msgid ""
+"A curated collection of applications, APIs, and experiments I've built with "
+"modern backend technologies."
+msgstr ""
+"مجموعه‌ای گزیده از برنامه‌ها، APIها و آزمایش‌هایی که با فناوری‌های بک‌اند "
+"مدرن ساخته‌ام."
+
+msgid "A quick introduction about who I am and what I enjoy building."
+msgstr "معرفی کوتاهی از اینکه من کی هستم و چه چیزهایی دوست دارم بسازم."
+
+msgid ""
+"A selection of projects showcasing my experience in backend development, "
+"APIs, and modern web technologies."
+msgstr ""
+"مجموعه‌ای از پروژه‌ها که تجربه من در توسعه بک‌اند، API و فناوری‌های وب مدرن "
+"را نشان می‌دهد."
+
+msgid "About"
+msgstr "درباره من"
+
+msgid "About Me"
+msgstr "درباره من"
+
+msgid "Acme Inc. (optional)"
+msgstr "شرکت نمونه (اختیاری)"
+
+msgid "Add location, email, and phone in your profile to show them here."
+msgstr ""
+"برای نمایش در اینجا، موقعیت، ایمیل و تلفن را در پروفایل خود اضافه کنید."
+
+msgid "All"
+msgstr "همه"
+
+msgid "All Posts"
+msgstr "همه مطالب"
+
+msgid "All rights reserved."
+msgstr "تمامی حقوق محفوظ است."
+
+msgid "APIs Shipped"
+msgstr "API منتشرشده"
+
+msgid ""
+"Articles, notes, and write-ups on backend development, APIs, and building "
+"reliable systems."
+msgstr ""
+"مقالات، یادداشت‌ها و نوشته‌ها درباره توسعه بک‌اند، API و ساخت سیستم‌های قابل"
+" اعتماد."
+
+msgid "Author"
+msgstr "نویسنده"
+
+msgid "Back to Home"
+msgstr "بازگشت به خانه"
+
+msgid "Backend Developer"
+msgstr "توسعه‌دهنده بک‌اند"
+
+msgid "Backend Development"
+msgstr "توسعه بک‌اند"
+
+msgid ""
+"Backend development, REST APIs, and database design services for reliable, "
+"scalable web applications."
+msgstr ""
+"خدمات توسعه بک‌اند، REST API و طراحی پایگاه داده برای برنامه‌های وب قابل "
+"اعتماد و مقیاس‌پذیر."
+
+msgid ""
+"Backend systems, REST APIs, Django and Laravel applications, database "
+"design, and integrations. I also build personal websites and shop websites, "
+"and can connect your custom frontend to a Laravel or Django backend. I'm "
+"happy to discuss both greenfield builds and improvements to existing "
+"products."
+msgstr ""
+"سیستم‌های بک‌اند، REST API، برنامه‌های جنگو و لاراول، طراحی پایگاه داده و "
+"یکپارچه‌سازی. همچنین وب‌سایت شخصی و فروشگاهی می‌سازم و می‌توانم فرانت‌اند "
+"اختصاصی شما را به بک‌اند لاراول یا جنگو متصل کنم. خوشحال می‌شوم هم درباره "
+"پروژه‌های جدید و هم بهبود محصولات موجود صحبت کنم."
+
+msgid "Blog"
+msgstr "وبلاگ"
+
+msgid "Blog RSS Feed"
+msgstr "فید RSS وبلاگ"
+
+msgid "Breadcrumb"
+msgstr "مسیر صفحه"
+
+msgid ""
+"Browse featured and completed projects spanning backend systems, APIs, and "
+"modern web applications."
+msgstr ""
+"مرور پروژه‌های ویژه و تکمیل‌شده در سیستم‌های بک‌اند، API و برنامه‌های وب "
+"مدرن."
+
+msgid ""
+"Browse more articles on backend systems, APIs, and building reliable "
+"products."
+msgstr ""
+"مقالات بیشتری درباره سیستم‌های بک‌اند، API و ساخت محصولات قابل اعتماد "
+"بخوانید."
+
+msgid "Build"
+msgstr "ساخت"
+
+msgid ""
+"Building fast, secure, and well-documented APIs for web applications, mobile"
+" apps, and third-party integrations."
+msgstr ""
+"ساخت APIهای سریع، امن و مستند برای برنامه‌های وب، موبایل و یکپارچه‌سازی با "
+"سرویس‌های شخص ثالث."
+
+msgid ""
+"Building scalable Django applications, REST APIs, and modern backend "
+"architectures with a focus on performance and maintainability."
+msgstr ""
+"ساخت برنامه‌های جنگو مقیاس‌پذیر، REST API و معماری‌های بک‌اند مدرن با تمرکز "
+"بر عملکرد و قابلیت نگهداری."
+
+msgid "Capabilities"
+msgstr "توانمندی‌ها"
+
+msgid "Career"
+msgstr "مسیر شغلی"
+
+msgid "Certificates"
+msgstr "گواهینامه‌ها"
+
+msgid "Certificates will appear here once they are added in the Django admin."
+msgstr ""
+"پس از افزودن در پنل مدیریت جنگو، گواهینامه‌ها در اینجا نمایش داده می‌شوند."
+
+msgid "Clear"
+msgstr "پاک کردن"
+
+msgid "Client Focus"
+msgstr "تمرکز بر مشتری"
+
+msgid "Close"
+msgstr "بستن"
+
+msgid "Close navigation menu"
+msgstr "بستن منوی ناوبری"
+
+msgid "Common Questions"
+msgstr "پرسش‌های رایج"
+
+msgid "Company"
+msgstr "شرکت"
+
+msgid "Company must be at most 150 characters."
+msgstr "نام شرکت باید حداکثر ۱۵۰ کاراکتر باشد."
+
+msgid "Completed"
+msgstr "تکمیل‌شده"
+
+msgid "Connect"
+msgstr "ارتباط"
+
+msgid "Contact"
+msgstr "تماس"
+
+msgid "Contact Me"
+msgstr "تماس با من"
+
+msgid "Copied"
+msgstr "کپی شد"
+
+msgid "Copy credential ID"
+msgstr "کپی شناسه مدرک"
+
+msgid "Copy link"
+msgstr "کپی لینک"
+
+msgid "Crafting reliable backend systems and refined digital experiences."
+msgstr "ساخت سیستم‌های بک‌اند قابل اعتماد و تجربه‌های دیجیتال باکیفیت."
+
+msgid ""
+"Creating efficient database schemas, optimizing queries, and ensuring data "
+"integrity for long-term scalability."
+msgstr ""
+"ایجاد طرح‌های پایگاه داده کارآمد، بهینه‌سازی پرس‌وجوها و تضمین یکپارچگی داده"
+" برای مقیاس‌پذیری بلندمدت."
+
+msgid "Credential ID copied"
+msgstr "شناسه مدرک کپی شد"
+
+msgid "Credentials"
+msgstr "مدارک"
+
+msgid "Database Design"
+msgstr "طراحی پایگاه داده"
+
+msgid "Deliver"
+msgstr "تحویل"
+
+msgid "Design"
+msgstr "طراحی"
+
+msgid ""
+"Designing secure, scalable, and maintainable backend systems using Django "
+"and modern development practices."
+msgstr ""
+"طراحی سیستم‌های بک‌اند امن، مقیاس‌پذیر و قابل نگهداری با جنگو و شیوه‌های "
+"توسعه مدرن."
+
+msgid ""
+"Developed APIs, optimized databases, integrated third-party services, and "
+"collaborated with frontend developers on production applications."
+msgstr ""
+"توسعه API، بهینه‌سازی پایگاه داده، یکپارچه‌سازی سرویس‌های شخص ثالث و همکاری "
+"با توسعه‌دهندگان فرانت‌اند در برنامه‌های تولیدی."
+
+msgid "Discover"
+msgstr "کشف"
+
+msgid "Discuss a Similar Project"
+msgstr "گفتگو درباره پروژه مشابه"
+
+msgid "Do you work remotely?"
+msgstr "آیا از راه دور کار می‌کنید؟"
+
+msgid "Download CV"
+msgstr "دانلود رزومه"
+
+msgid "Email"
+msgstr "ایمیل"
+
+msgid "Email Address"
+msgstr "آدرس ایمیل"
+
+msgid "English"
+msgstr "انگلیسی"
+
+msgid "Enter a valid email address."
+msgstr "یک آدرس ایمیل معتبر وارد کنید."
+
+msgid "Error 404"
+msgstr "خطای ۴۰۴"
+
+msgid "Experience"
+msgstr "تجربه"
+
+msgid "Experience Snapshot"
+msgstr "نگاهی به تجربه"
+
+msgid "Explore the full blog"
+msgstr "کاوش در کل وبلاگ"
+
+msgid "FAQ"
+msgstr "سوالات متداول"
+
+msgid "Featured"
+msgstr "ویژه"
+
+msgid "Featured Posts"
+msgstr "مطالب ویژه"
+
+msgid "Featured Projects"
+msgstr "پروژه‌های ویژه"
+
+msgid "Full Name"
+msgstr "نام کامل"
+
+msgid "Gallery"
+msgstr "گالری"
+
+msgid "Get in Touch"
+msgstr "در تماس باشید"
+
+msgid "Get in touch"
+msgstr "تماس بگیرید"
+
+msgid ""
+"Get in touch about backend development, APIs, or a new project "
+"collaboration."
+msgstr "برای توسعه بک‌اند، API یا همکاری در پروژه جدید با من تماس بگیرید."
+
+msgid ""
+"Have a project in mind or just want to say hello? I'd love to hear from you."
+msgstr ""
+"پروژه‌ای در ذهن دارید یا فقط می‌خواهید سلام کنید؟ خوشحال می‌شوم از شما "
+"بشنوم."
+
+msgid "Have a similar idea?"
+msgstr "ایده مشابهی دارید؟"
+
+msgid "Hello, I'm"
+msgstr "سلام، من"
+
+msgid ""
+"Helping businesses build reliable, scalable, and high-performance web "
+"applications."
+msgstr ""
+"کمک به کسب‌وکارها برای ساخت برنامه‌های وب قابل اعتماد، مقیاس‌پذیر و "
+"پرعملکرد."
+
+msgid "Highlights"
+msgstr "برجسته‌ها"
+
+msgid "Home"
+msgstr "خانه"
+
+msgid "How I Work"
+msgstr "نحوه کار من"
+
+msgid "How quickly do you respond?"
+msgstr "چقدر سریع پاسخ می‌دهید؟"
+
+msgid ""
+"I enjoy designing scalable backend systems, building REST APIs, optimizing "
+"databases, and creating clean, maintainable software. My goal is to build "
+"applications that are fast, secure, and easy to maintain."
+msgstr ""
+"من از طراحی سیستم‌های بک‌اند مقیاس‌پذیر، ساخت REST API، بهینه‌سازی پایگاه "
+"داده و ایجاد نرم‌افزار تمیز و قابل نگهداری لذت می‌برم. هدف من ساخت "
+"برنامه‌هایی است که سریع، امن و آسان برای نگهداری باشند."
+
+msgid ""
+"I typically reply within 1–2 business days. For urgent project inquiries, "
+"include deadlines in your message so I can prioritize accordingly."
+msgstr ""
+"معمولاً ظرف ۱ تا ۲ روز کاری پاسخ می‌دهم. برای درخواست‌های فوری، مهلت‌ها را "
+"در پیام ذکر کنید تا اولویت‌بندی کنم."
+
+msgid "I'll get back to you as soon as I can."
+msgstr "در اسرع وقت با شما تماس خواهم گرفت."
+
+msgid ""
+"I'm a passionate backend developer who enjoys building scalable web "
+"applications, REST APIs, and clean software architecture using modern "
+"technologies."
+msgstr ""
+"من یک توسعه‌دهنده بک‌اند پرانرژی هستم که از ساخت برنامه‌های وب مقیاس‌پذیر، "
+"REST API و معماری نرم‌افزار تمیز با فناوری‌های مدرن لذت می‌برم."
+
+msgid "Image preview"
+msgstr "پیش‌نمایش تصویر"
+
+msgid ""
+"Implement with clean code, tests, and iterative feedback so quality stays "
+"high."
+msgstr "پیاده‌سازی با کد تمیز، تست و بازخورد تکراری تا کیفیت بالا بماند."
+
+msgid "In Progress"
+msgstr "در حال انجام"
+
+msgid "Introduction"
+msgstr "معرفی"
+
+msgid "John Doe"
+msgstr "علی رضایی"
+
+msgid "Keep Reading"
+msgstr "ادامه مطالعه"
+
+msgid "Languages"
+msgstr "زبان‌ها"
+
+msgid "Latest articles and notes from the portfolio blog."
+msgstr "تازه‌ترین مقالات و یادداشت‌های وبلاگ نمونه‌کار."
+
+msgid "Latest from the Blog"
+msgstr "تازه‌ترین مطالب وبلاگ"
+
+msgid "Learn More About Me"
+msgstr "بیشتر درباره من"
+
+msgid "Learn more about my background, skills, and professional journey."
+msgstr "بیشتر درباره پیشینه، مهارت‌ها و مسیر حرفه‌ای من بدانید."
+
+msgid "Let's build something solid"
+msgstr "بیایید چیز محکمی بسازیم"
+
+msgid ""
+"Let's talk about how we can build something reliable, scalable, and "
+"thoughtfully designed."
+msgstr ""
+"بیایید درباره ساخت چیزی قابل اعتماد، مقیاس‌پذیر و با طراحی دقیق صحبت کنیم."
+
+msgid "Let's Work Together"
+msgstr "بیایید با هم کار کنیم"
+
+msgid "Link copied"
+msgstr "لینک کپی شد"
+
+msgid "Live Demo"
+msgstr "نمایش زنده"
+
+msgid "Location"
+msgstr "موقعیت"
+
+msgid "Message"
+msgstr "پیام"
+
+msgid "Message must be at least 10 characters."
+msgstr "پیام باید حداقل ۱۰ کاراکتر باشد."
+
+msgid "Message must be at most 5000 characters."
+msgstr "پیام باید حداکثر ۵۰۰۰ کاراکتر باشد."
+
+msgid "Mobile navigation"
+msgstr "ناوبری موبایل"
+
+msgid "More Work"
+msgstr "کارهای بیشتر"
+
+msgid "More Writing"
+msgstr "نوشته‌های بیشتر"
+
+msgid "My professional journey and the milestones that have shaped my career."
+msgstr "مسیر حرفه‌ای من و نقاط عطفی که شکل‌دهنده مسیر شغلی‌ام بوده‌اند."
+
+msgid "Name must be at most 150 characters."
+msgstr "نام باید حداکثر ۱۵۰ کاراکتر باشد."
+
+msgid "Navigate"
+msgstr "پیمایش"
+
+msgid "Next"
+msgstr "بعدی"
+
+msgid "Next Step"
+msgstr "گام بعدی"
+
+msgid "No certificates yet"
+msgstr "هنوز گواهینامه‌ای وجود ندارد"
+
+msgid "No posts match your search. Try a different query."
+msgstr "هیچ مطلبی با جستجوی شما مطابقت ندارد. عبارت دیگری را امتحان کنید."
+
+msgid "No posts yet"
+msgstr "هنوز مطلبی وجود ندارد"
+
+msgid ""
+"No projects match this filter. Try another status or view all projects."
+msgstr ""
+"هیچ پروژه‌ای با این فیلتر مطابقت ندارد. وضعیت دیگری را امتحان کنید یا همه "
+"پروژه‌ها را ببینید."
+
+msgid "No projects yet"
+msgstr "هنوز پروژه‌ای وجود ندارد"
+
+msgid "No published posts in this filter yet."
+msgstr "هنوز مطلب منتشرشده‌ای در این فیلتر وجود ندارد."
+
+msgid "Open navigation menu"
+msgstr "باز کردن منوی ناوبری"
+
+msgid "Overview"
+msgstr "نمای کلی"
+
+msgid "Page Not Found"
+msgstr "صفحه پیدا نشد"
+
+msgid "Page not found"
+msgstr "صفحه پیدا نشد"
+
+msgid "Pagination"
+msgstr "صفحه‌بندی"
+
+msgid "Pass this post along on Telegram, WhatsApp, or copy the link."
+msgstr "این مطلب را در تلگرام، واتساپ به اشتراک بگذارید یا لینک را کپی کنید."
+
+msgid "Persian"
+msgstr "فارسی"
+
+msgid "Phone"
+msgstr "تلفن"
+
+msgid "Phone must be at most 30 characters."
+msgstr "شماره تلفن باید حداکثر ۳۰ کاراکتر باشد."
+
+msgid "Planned"
+msgstr "برنامه‌ریزی‌شده"
+
+msgid "Please correct the errors below."
+msgstr "لطفاً خطاهای زیر را برطرف کنید."
+
+msgid "Please enter a message."
+msgstr "لطفاً پیام خود را وارد کنید."
+
+msgid "Please enter your email address."
+msgstr "لطفاً آدرس ایمیل خود را وارد کنید."
+
+msgid "Please enter your name."
+msgstr "لطفاً نام خود را وارد کنید."
+
+msgid "Portfolio"
+msgstr "نمونه‌کار"
+
+msgid "Portfolio Blog"
+msgstr "وبلاگ نمونه‌کار"
+
+msgid "Posts filed under %(category)s."
+msgstr "مطالب دسته‌بندی‌شده در %(category)s."
+
+msgid "Posts tagged with %(tag)s."
+msgstr "مطالب با برچسب %(tag)s."
+
+msgid "Posts will appear here once they are published in the Django admin."
+msgstr "پس از انتشار در پنل مدیریت جنگو، مطالب در اینجا نمایش داده می‌شوند."
+
+msgid "Present"
+msgstr "اکنون"
+
+msgid "Previous"
+msgstr "قبلی"
+
+msgid "Process"
+msgstr "فرآیند"
+
+msgid "Profile Photo"
+msgstr "عکس پروفایل"
+
+msgid "Project Inquiry"
+msgstr "استعلام پروژه"
+
+msgid "Project Screenshots"
+msgstr "تصاویر پروژه"
+
+msgid "Projects"
+msgstr "پروژه‌ها"
+
+msgid "Projects Delivered"
+msgstr "پروژه تحویل‌شده"
+
+msgid "Projects will appear here once they are added in the Django admin."
+msgstr ""
+"پس از افزودن در پنل مدیریت جنگو، پروژه‌ها در اینجا نمایش داده می‌شوند."
+
+msgid "Quick Facts"
+msgstr "اطلاعات سریع"
+
+msgid "Read More"
+msgstr "ادامه مطلب"
+
+msgid "Ready to start?"
+msgstr "آماده شروع هستید؟"
+
+msgid ""
+"Recent articles and notes on backend development, APIs, and building "
+"reliable systems."
+msgstr ""
+"مقالات و یادداشت‌های اخیر درباره توسعه بک‌اند، API و ساخت سیستم‌های قابل "
+"اعتماد."
+
+msgid "Related Posts"
+msgstr "مطالب مرتبط"
+
+msgid "Related Projects"
+msgstr "پروژه‌های مرتبط"
+
+msgid "REST API Development"
+msgstr "توسعه REST API"
+
+msgid "RSS Feed"
+msgstr "فید RSS"
+
+msgid "Search"
+msgstr "جستجو"
+
+msgid "Search articles…"
+msgstr "جستجوی مقالات…"
+
+msgid "Search posts"
+msgstr "جستجوی مطالب"
+
+msgid "Select language"
+msgstr "انتخاب زبان"
+
+msgid "Selected Work"
+msgstr "کارهای منتخب"
+
+msgid "Send Message"
+msgstr "ارسال پیام"
+
+msgid "Services"
+msgstr "خدمات"
+
+msgid ""
+"Shape architecture, data models, and interfaces that stay maintainable as "
+"you grow."
+msgstr ""
+"شکل‌دهی معماری، مدل داده و رابط‌هایی که با رشد شما قابل نگهداری بمانند."
+
+msgid "Share"
+msgstr "اشتراک‌ گذاری"
+
+msgid ""
+"Ship, document, and hand over systems that are ready for production and "
+"future work."
+msgstr ""
+"تحویل، مستندسازی و واگذاری سیستم‌هایی که برای تولید و کارهای آینده "
+"آماده‌اند."
+
+msgid "Skills & Tools"
+msgstr "مهارت‌ها و ابزارها"
+
+msgid "Social"
+msgstr "شبکه‌های اجتماعی"
+
+msgid "Subject"
+msgstr "موضوع"
+
+msgid "Subject must be at most 200 characters."
+msgstr "موضوع باید حداکثر ۲۰۰ کاراکتر باشد."
+
+msgid "Tags"
+msgstr "برچسب‌ها"
+
+msgid "Tech Stack"
+msgstr "فناوری‌ها"
+
+msgid ""
+"Technologies and tools I use to build scalable, secure, and modern web "
+"applications."
+msgstr ""
+"فناوری‌ها و ابزارهایی که برای ساخت برنامه‌های وب مقیاس‌پذیر، امن و مدرن "
+"استفاده می‌کنم."
+
+msgid "Technologies I use to design, build, and ship reliable software."
+msgstr ""
+"فناوری‌هایی که برای طراحی، ساخت و تحویل نرم‌افزار قابل اعتماد استفاده "
+"می‌کنم."
+
+msgid "Telegram"
+msgstr "تلگرام"
+
+msgid ""
+"Tell me about your project and I'll help you choose the right approach for "
+"backend, APIs, or data."
+msgstr ""
+"درباره پروژه‌تان بگویید تا در انتخاب رویکرد مناسب برای بک‌اند، API یا داده "
+"کمکتان کنم."
+
+msgid "Tell me about your project..."
+msgstr "درباره پروژه‌تان بگویید..."
+
+msgid "Thank you! Your message has been sent."
+msgstr "متشکرم! پیام شما ارسال شد."
+
+msgid "The page you were looking for could not be found."
+msgstr "صفحه‌ای که به دنبال آن بودید پیدا نشد."
+
+msgid "This post is a draft and is only visible to staff."
+msgstr "این مطلب پیش‌نویس است و فقط برای کارکنان قابل مشاهده است."
+
+msgid ""
+"This route doesn't exist — or it moved. Head home, or browse the projects "
+"instead."
+msgstr ""
+"این مسیر وجود ندارد — یا جابه‌جا شده است. به خانه برگردید یا پروژه‌ها را "
+"مرور کنید."
+
+msgid ""
+"This section will automatically display your personal introduction after you"
+" create your profile in the Django admin panel."
+msgstr ""
+"این بخش پس از ایجاد پروفایل در پنل مدیریت جنگو، به‌طور خودکار معرفی شخصی شما"
+" را نمایش می‌دهد."
+
+msgid "Toggle color theme"
+msgstr "تغییر تم رنگ"
+
+msgid "Toggle theme"
+msgstr "تغییر تم"
+
+msgid "Too many messages. Please wait an hour before trying again."
+msgstr ""
+"پیام‌های زیادی ارسال شده است. لطفاً یک ساعت صبر کنید و دوباره تلاش کنید."
+
+msgid ""
+"Understand goals, constraints, and success metrics for your product or API."
+msgstr "درک اهداف، محدودیت‌ها و معیارهای موفقیت برای محصول یا API شما."
+
+msgid "Verified credentials and courses that shaped my engineering craft."
+msgstr "مدارک و دوره‌های تأییدشده‌ای که مهندسی من را شکل داده‌اند."
+
+msgid "View All Certificates"
+msgstr "مشاهده همه گواهینامه‌ها"
+
+msgid "View All Posts"
+msgstr "مشاهده همه مطالب"
+
+msgid "View All Projects"
+msgstr "مشاهده همه پروژه‌ها"
+
+msgid "View All Services"
+msgstr "مشاهده همه خدمات"
+
+msgid "View certificate"
+msgstr "مشاهده گواهینامه"
+
+msgid "View certificate image"
+msgstr "مشاهده تصویر گواهینامه"
+
+msgid "View credential"
+msgstr "مشاهده مدرک"
+
+msgid "View Full Timeline"
+msgstr "مشاهده خط زمانی کامل"
+
+msgid "View Projects"
+msgstr "مشاهده پروژه‌ها"
+
+msgid "Website"
+msgstr "وب‌سایت"
+
+msgid ""
+"Welcome to my portfolio. Please create your profile from the Django admin "
+"panel to customize this section."
+msgstr ""
+"به نمونه‌کار من خوش آمدید. لطفاً پروفایل خود را از پنل مدیریت جنگو ایجاد "
+"کنید تا این بخش را سفارشی کنید."
+
+msgid "What I Offer"
+msgstr "آنچه ارائه می‌دهم"
+
+msgid "What kind of projects do you take on?"
+msgstr "چه نوع پروژه‌هایی می‌پذیرید؟"
+
+msgid "WhatsApp"
+msgstr "واتساپ"
+
+msgid ""
+"Whether you're looking for a backend developer, need help building an API, "
+"or want to discuss a new project, feel free to reach out."
+msgstr ""
+"چه به دنبال توسعه‌دهنده بک‌اند باشید، به ساخت API نیاز داشته باشید یا "
+"بخواهید درباره پروژه جدیدی صحبت کنید، با خیال راحت تماس بگیرید."
+
+msgid "Writing"
+msgstr "نوشته‌ها"
+
+msgid "Years Experience"
+msgstr "سال تجربه"
+
+msgid ""
+"Yes — I collaborate remotely with clients worldwide, using clear async "
+"communication and regular check-ins."
+msgstr ""
+"بله — با مشتریان در سراسر جهان از راه دور همکاری می‌کنم، با ارتباط شفاف "
+"ناهمزمان و جلسات منظم."
+
+msgid "Your Name"
+msgstr "نام شما"
+
+msgid "%(minutes)s min read"
+msgid_plural "%(minutes)s min read"
+msgstr[0] "%(minutes)s دقیقه مطالعه"
+msgstr[1] "%(minutes)s دقیقه مطالعه"
+
+msgid "%(views)s view"
+msgid_plural "%(views)s views"
+msgstr[0] "%(views)s بازدید"
+msgstr[1] "%(views)s بازدید"
+
+msgid "%(counter)s result for “%(search_query)s”"
+msgid_plural "%(counter)s results for “%(search_query)s”"
+msgstr[0] "%(counter)s نتیجه برای «%(search_query)s»"
+msgstr[1] "%(counter)s نتیجه برای «%(search_query)s»"
+
+msgid "Search: %(search_query)s"
+msgstr "جستجو: %(search_query)s"
+
+msgid "View screenshot %(n)s"
+msgstr "مشاهده تصویر %(n)s"
+
+msgid "View %(title)s certificate from %(issuer)s"
+msgstr "مشاهده گواهینامه %(title)s از %(issuer)s"

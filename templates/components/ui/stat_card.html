@@ -1,0 +1,6 @@
+<div class="stat-card {{ class|default:'' }}" data-reveal{% if delay %} data-delay="{{ delay }}"{% endif %}>
+  <p class="stat-card__value gradient-text-blue-purple">{{ value }}</p>
+  {% if label %}
+  <p class="stat-card__label">{{ label }}</p>
+  {% endif %}
+</div>

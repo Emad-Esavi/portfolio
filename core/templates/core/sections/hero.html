@@ -1,0 +1,81 @@
+{% load i18n %}
+
+<section id="home" class="section relative overflow-hidden">
+    <div class="section-container">
+        <div class="grid items-center gap-16 lg:grid-cols-2 lg:gap-20">
+
+            
+            <div data-reveal="right">
+                <p class="text-eyebrow mb-6">
+                    {% trans "Hello, I'm" %}
+                </p>
+
+                {% if profile %}
+                <h1 class="text-display-1 text-balance">
+                    {{ profile.full_name }}
+                </h1>
+                <p class="mt-5 text-h2 text-base-content/70">
+                    <span class="gradient-text-blue-purple">{{ profile.job_title }}</span>
+                </p>
+                <p class="mt-8 max-w-xl text-body-lg text-muted">
+                    {{ profile.short_bio }}
+                </p>
+                {% else %}
+                <h1 class="text-display-1 text-balance">
+                    {% trans "Your Name" %}
+                </h1>
+                <p class="mt-5 text-h2 text-base-content/70">
+                    <span class="gradient-text-blue-purple">{% trans "Backend Developer" %}</span>
+                </p>
+                <p class="mt-8 max-w-xl text-body-lg text-muted">
+                    {% trans "Welcome to my portfolio. Please create your profile from the Django admin panel to customize this section." %}
+                </p>
+                {% endif %}
+
+                <div class="mt-10 flex flex-wrap gap-4">
+                    <a href="{% url 'projects' %}" class="btn btn-primary btn-ripple">
+                        {% trans "View Projects" %}
+                        {% include "components/ui/icon.html" with name="arrow-right" size="sm" %}
+                    </a>
+                    {% if profile.resume %}
+                    <a
+                        href="{% url 'download_resume' %}"
+                        class="btn btn-glass btn-ripple"
+                    >
+                        {% include "components/ui/icon.html" with name="download" size="sm" %}
+                        {% trans "Download CV" %}
+                    </a>
+                    {% endif %}
+                    <a href="{% url 'contact' %}" class="btn btn-outline btn-ripple">
+                        {% trans "Contact Me" %}
+                    </a>
+                </div>
+            </div>
+
+            
+            <div class="relative mx-auto w-full max-w-md lg:ms-auto" data-reveal="left" data-delay="2">
+                <div class="absolute -inset-4 rounded-image gradient-blue-purple opacity-20 blur-2xl" aria-hidden="true"></div>
+                <div class="portrait-frame portrait-frame--protected relative" oncontextmenu="return false;">
+                    {% if profile and profile.profile_image %}
+                    <img
+                        src="{{ profile.profile_image.url }}"
+                        alt="{{ profile.full_name }}"
+                        width="480"
+                        height="600"
+                        draggable="false"
+                    >
+                    {% else %}
+                    <img
+                        src="https://picsum.photos/seed/portfolio-portrait/640/800"
+                        alt="{% trans 'Profile Photo' %}"
+                        width="480"
+                        height="600"
+                        draggable="false"
+                    >
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

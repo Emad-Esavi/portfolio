@@ -1,0 +1,88 @@
+{% load i18n %}
+
+<div
+  class="lang-switcher"
+  x-data="{ open: false }"
+  @keydown.escape.window="open = false"
+  @click.outside="open = false"
+>
+  <button
+    type="button"
+    class="lang-switcher__trigger"
+    @click="open = !open"
+    :aria-expanded="open.toString()"
+    aria-haspopup="listbox"
+    aria-label="{% trans 'Select language' %}"
+  >
+    <span class="lang-switcher__icon" aria-hidden="true">
+      {% include "components/ui/icon.html" with name="globe" size="sm" %}
+    </span>
+    <span class="lang-switcher__code">
+      {% if LANGUAGE_CODE == 'fa' %}FA{% else %}EN{% endif %}
+    </span>
+    <span
+      class="lang-switcher__chevron"
+      :class="open && 'is-open'"
+      aria-hidden="true"
+    >
+      {% include "components/ui/icon.html" with name="chevron-down" size="sm" %}
+    </span>
+  </button>
+
+  <div
+    x-show="open"
+    x-cloak
+    x-transition:enter="transition ease-out duration-150"
+    x-transition:enter-start="opacity-0 translate-y-1"
+    x-transition:enter-end="opacity-100 translate-y-0"
+    x-transition:leave="transition ease-in duration-100"
+    x-transition:leave-start="opacity-100 translate-y-0"
+    x-transition:leave-end="opacity-0 translate-y-1"
+    class="lang-switcher__menu"
+    role="listbox"
+    aria-label="{% trans 'Languages' %}"
+  >
+    <form action="{% url 'set_language' %}" method="post" class="lang-switcher__form">
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ request.get_full_path }}">
+
+      <button
+        type="submit"
+        name="language"
+        value="en"
+        class="lang-switcher__option {% if LANGUAGE_CODE == 'en' %}is-active{% endif %}"
+        role="option"
+        aria-selected="{% if LANGUAGE_CODE == 'en' %}true{% else %}false{% endif %}"
+      >
+        <span class="lang-switcher__option-main">
+          <span class="lang-switcher__option-code">EN</span>
+          <span class="lang-switcher__option-label">{% trans "English" %}</span>
+        </span>
+        {% if LANGUAGE_CODE == 'en' %}
+        <span class="lang-switcher__check" aria-hidden="true">
+          {% include "components/ui/icon.html" with name="check" size="sm" %}
+        </span>
+        {% endif %}
+      </button>
+
+      <button
+        type="submit"
+        name="language"
+        value="fa"
+        class="lang-switcher__option {% if LANGUAGE_CODE == 'fa' %}is-active{% endif %}"
+        role="option"
+        aria-selected="{% if LANGUAGE_CODE == 'fa' %}true{% else %}false{% endif %}"
+      >
+        <span class="lang-switcher__option-main">
+          <span class="lang-switcher__option-code">FA</span>
+          <span class="lang-switcher__option-label">فارسی</span>
+        </span>
+        {% if LANGUAGE_CODE == 'fa' %}
+        <span class="lang-switcher__check" aria-hidden="true">
+          {% include "components/ui/icon.html" with name="check" size="sm" %}
+        </span>
+        {% endif %}
+      </button>
+    </form>
+  </div>
+</div>

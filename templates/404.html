@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Page Not Found" %}{% endblock %}
+
+{% block meta_description %}
+{% trans "The page you were looking for could not be found." %}
+{% endblock %}
+
+{% block content %}
+<section class="section relative overflow-hidden">
+    <div class="section-container">
+        <div class="mx-auto max-w-2xl text-center" data-reveal>
+            <p class="text-eyebrow mb-6">{% trans "Error 404" %}</p>
+
+            <p class="text-display-1 gradient-text-blue-purple leading-none" aria-hidden="true">
+                404
+            </p>
+
+            <h1 class="mt-8 text-display-2 text-balance">
+                {% trans "Page not found" %}
+            </h1>
+
+            <p class="mx-auto mt-6 max-w-md text-body-lg text-muted">
+                {% trans "This route doesn't exist — or it moved. Head home, or browse the projects instead." %}
+            </p>
+
+            <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+                <a href="{% url 'home' %}" class="btn btn-primary btn-ripple">
+                    {% trans "Back to Home" %}
+                </a>
+                <a href="{% url 'projects' %}" class="btn btn-outline btn-ripple">
+                    {% trans "View Projects" %}
+                    {% include "components/ui/icon.html" with name="arrow-right" size="sm" %}
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

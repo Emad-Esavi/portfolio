@@ -1,0 +1,6 @@
+<div class="code-block {{ class|default:'' }}">
+  <div class="code-block__header">
+    <span>{{ title|default:language|default:"code" }}</span>
+  </div>
+  <pre><code{% if language %} class="language-{{ language }}"{% endif %}>{{ code }}</code></pre>
+</div>

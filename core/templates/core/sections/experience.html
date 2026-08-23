@@ -1,0 +1,66 @@
+{% load i18n %}
+
+{% if experiences %}
+<section id="experience" class="section">
+    <div class="section-container">
+        <div class="section-header section-header--center" data-reveal>
+            <p class="text-eyebrow">{% trans "Career" %}</p>
+            <h2 class="section-title text-balance">{% trans "Experience" %}</h2>
+            <p class="section-subtitle">
+                {% trans "My professional journey and the milestones that have shaped my career." %}
+            </p>
+        </div>
+
+        <div class="relative mx-auto mt-16 max-w-3xl">
+            
+            <div class="absolute start-4 top-0 bottom-0 w-px bg-base-content/10 md:start-auto md:left-1/2 md:-translate-x-1/2" aria-hidden="true"></div>
+
+            <div class="space-y-8">
+                {% for exp in experiences %}
+                <div class="relative md:grid md:grid-cols-2 md:gap-10">
+                    {% if forloop.counter|divisibleby:2 %}
+                    <div class="ps-12 md:ps-0 md:text-end">
+                        <span class="absolute start-2.5 top-6 h-3 w-3 rounded-full bg-primary/70 md:start-auto md:left-1/2 md:-translate-x-1/2" aria-hidden="true"></span>
+                        <article class="timeline-card hover-lift md:ms-auto" data-reveal data-delay="{{ forloop.counter }}">
+                            <p class="timeline-card__date mb-3">
+                                {{ exp.start_date|date:"Y" }}
+                                —
+                                {% if exp.currently_working %}
+                                    {% trans "Present" %}
+                                {% elif exp.end_date %}
+                                    {{ exp.end_date|date:"Y" }}
+                                {% endif %}
+                            </p>
+                            <h3 class="text-h3">{{ exp.position }}</h3>
+                            <p class="mt-1 text-sm font-medium text-primary/80">{{ exp.company }}</p>
+                            <p class="mt-4 text-muted text-body">{{ exp.description }}</p>
+                        </article>
+                    </div>
+                    <div class="hidden md:block"></div>
+                    {% else %}
+                    <div class="hidden md:block"></div>
+                    <div class="ps-12 md:ps-0">
+                        <span class="absolute start-2.5 top-6 h-3 w-3 rounded-full {% if forloop.first %}bg-primary shadow-glow-blue{% else %}bg-accent/80{% endif %} md:start-auto md:left-1/2 md:-translate-x-1/2" aria-hidden="true"></span>
+                        <article class="timeline-card hover-lift" data-reveal data-delay="{{ forloop.counter }}">
+                            <p class="timeline-card__date mb-3">
+                                {{ exp.start_date|date:"Y" }}
+                                —
+                                {% if exp.currently_working %}
+                                    {% trans "Present" %}
+                                {% elif exp.end_date %}
+                                    {{ exp.end_date|date:"Y" }}
+                                {% endif %}
+                            </p>
+                            <h3 class="text-h3">{{ exp.position }}</h3>
+                            <p class="mt-1 text-sm font-medium text-primary/80">{{ exp.company }}</p>
+                            <p class="mt-4 text-muted text-body">{{ exp.description }}</p>
+                        </article>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}

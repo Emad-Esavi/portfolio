@@ -1,0 +1,34 @@
+{% load i18n %}
+{% if page_obj %}
+<nav aria-label="{% trans 'Pagination' %}" class="{{ class|default:'' }}">
+  <ul class="pagination-premium">
+    {% if page_obj.has_previous %}
+    <li>
+      <a href="?{% for key, value in request.GET.items %}{% if key != 'page' %}{{ key }}={{ value }}&{% endif %}{% endfor %}page={{ page_obj.previous_page_number }}" aria-label="{% trans 'Previous' %}">
+        {% include "components/ui/icon.html" with name="arrow-left" size="sm" %}
+      </a>
+    </li>
+    {% endif %}
+
+    {% for num in page_obj.paginator.page_range %}
+      {% if page_obj.number == num %}
+      <li><span class="is-active" aria-current="page">{{ num }}</span></li>
+      {% elif num == page_obj.number|add:"-2" or num == page_obj.number|add:"-1" or num == page_obj.number|add:"1" or num == page_obj.number|add:"2" or num == 1 or num == page_obj.paginator.num_pages %}
+      <li><a href="?{% for key, value in request.GET.items %}{% if key != 'page' %}{{ key }}={{ value }}&{% endif %}{% endfor %}page={{ num }}">{{ num }}</a></li>
+      {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+    <li>
+      <a href="?{% for key, value in request.GET.items %}{% if key != 'page' %}{{ key }}={{ value }}&{% endif %}{% endfor %}page={{ page_obj.next_page_number }}" aria-label="{% trans 'Next' %}">
+        {% include "components/ui/icon.html" with name="arrow-right" size="sm" %}
+      </a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+{% elif pages_html %}
+<nav aria-label="{% trans 'Pagination' %}" class="{{ class|default:'' }}">
+  <ul class="pagination-premium">{{ pages_html|safe }}</ul>
+</nav>
+{% endif %}

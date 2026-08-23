@@ -1,0 +1,22 @@
+{# Expected: name, id, label, type, placeholder, required, value, class, hint, autocomplete, errors #}
+<div class="form-field {{ class|default:'' }}">
+  {% if label %}
+  <label class="form-label" {% if id %}for="{{ id }}"{% endif %}>{{ label }}{% if required %} <span class="text-error">*</span>{% endif %}</label>
+  {% endif %}
+  <input
+    type="{{ type|default:'text' }}"
+    name="{{ name }}"
+    {% if id %}id="{{ id }}"{% endif %}
+    class="input-premium{% if errors %} is-invalid{% endif %}"
+    {% if placeholder %}placeholder="{{ placeholder }}"{% endif %}
+    {% if value %}value="{{ value }}"{% endif %}
+    {% if required %}required{% endif %}
+    {% if autocomplete %}autocomplete="{{ autocomplete }}"{% endif %}
+    {% if errors %}aria-invalid="true"{% if id %} aria-describedby="{{ id }}-error"{% endif %}{% endif %}
+  >
+  {% if errors %}
+  <p class="form-error" {% if id %}id="{{ id }}-error"{% endif %} role="alert">{{ errors|join:", " }}</p>
+  {% elif hint %}
+  <p class="form-hint">{{ hint }}</p>
+  {% endif %}
+</div>

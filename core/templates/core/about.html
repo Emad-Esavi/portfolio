@@ -1,0 +1,227 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "About" %}{% endblock %}
+
+{% block meta_description %}
+{% if profile.short_bio %}{{ profile.short_bio }}{% else %}{% trans "Learn more about my background, skills, and professional journey." %}{% endif %}
+{% endblock %}
+
+{% block content %}
+{% trans "Introduction" as ph_eyebrow %}
+{% trans "About Me" as ph_title %}
+{% trans "A closer look at who I am, what I build, and the path that brought me here." as ph_subtitle %}
+{% include "components/layout/page_header.html" with eyebrow=ph_eyebrow title=ph_title subtitle=ph_subtitle crumb_label=ph_title align="center" %}
+
+<section class="section pt-0">
+    <div class="section-container">
+        <div class="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
+            <div data-reveal="right">
+                {% if profile %}
+                <h2 class="text-h2 mb-4">{{ profile.full_name }}</h2>
+                <p class="text-h3 mb-6 text-base-content/70">
+                    <span class="gradient-text-blue-purple">{{ profile.job_title }}</span>
+                </p>
+                <div class="text-body-lg leading-relaxed text-base-content/85 whitespace-pre-line">
+                    {{ profile.about|default:profile.short_bio }}
+                </div>
+                {% else %}
+                <h2 class="text-h2 mb-4">{% trans "Backend Developer" %}</h2>
+                <p class="text-body-lg leading-relaxed text-base-content/85">
+                    {% trans "I'm a passionate backend developer who enjoys building scalable web applications, REST APIs, and clean software architecture using modern technologies." %}
+                </p>
+                <p class="mt-6 text-body text-muted">
+                    {% trans "This section will automatically display your personal introduction after you create your profile in the Django admin panel." %}
+                </p>
+                {% endif %}
+
+                <p class="mt-6 text-body text-muted">
+                    {% trans "I enjoy designing scalable backend systems, building REST APIs, optimizing databases, and creating clean, maintainable software. My goal is to build applications that are fast, secure, and easy to maintain." %}
+                </p>
+
+                <div class="mt-8 flex flex-wrap gap-3">
+                    {% if profile.resume %}
+                    <a href="{% url 'download_resume' %}" class="btn btn-primary btn-ripple">
+                        {% include "components/ui/icon.html" with name="download" size="sm" %}
+                        {% trans "Download CV" %}
+                    </a>
+                    {% endif %}
+                    <a href="{% url 'contact' %}" class="btn btn-glass btn-ripple">
+                        {% trans "Contact Me" %}
+                    </a>
+                </div>
+
+                {% if profile.github or profile.linkedin or profile.instagram or profile.x %}
+                <div class="mt-8 flex flex-wrap gap-3">
+                    {% if profile.github %}
+                    <a href="{{ profile.github }}" class="btn btn-outline btn-sm btn-ripple" target="_blank" rel="noopener noreferrer">
+                        {% include "components/ui/icon.html" with name="github" size="sm" %}
+                        GitHub
+                    </a>
+                    {% endif %}
+                    {% if profile.linkedin %}
+                    <a href="{{ profile.linkedin }}" class="btn btn-outline btn-sm btn-ripple" target="_blank" rel="noopener noreferrer">
+                        LinkedIn
+                    </a>
+                    {% endif %}
+                    {% if profile.instagram %}
+                    <a href="{{ profile.instagram }}" class="btn btn-outline btn-sm btn-ripple" target="_blank" rel="noopener noreferrer">
+                        Instagram
+                    </a>
+                    {% endif %}
+                    {% if profile.x %}
+                    <a href="{{ profile.x }}" class="btn btn-outline btn-sm btn-ripple" target="_blank" rel="noopener noreferrer">
+                        X
+                    </a>
+                    {% endif %}
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="space-y-8" data-reveal="left" data-delay="2">
+                <div class="relative mx-auto w-full max-w-md">
+                    <div class="absolute -inset-4 rounded-image gradient-blue-purple opacity-20 blur-2xl" aria-hidden="true"></div>
+                    <div class="portrait-frame portrait-frame--protected relative" oncontextmenu="return false;">
+                        {% if profile and profile.profile_image %}
+                        <img
+                            src="{{ profile.profile_image.url }}"
+                            alt="{{ profile.full_name }}"
+                            width="480"
+                            height="600"
+                            draggable="false"
+                        >
+                        {% else %}
+                        <img
+                            src="https://picsum.photos/seed/portfolio-about/640/800"
+                            alt="{% trans 'Profile Photo' %}"
+                            width="480"
+                            height="600"
+                            draggable="false"
+                        >
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="glass-card shadow-soft p-6 space-y-4">
+                    <h3 class="text-h3">{% trans "Quick Facts" %}</h3>
+                    <ul class="space-y-3 text-body text-muted">
+                        {% if profile.location %}
+                        <li class="flex items-center gap-3">
+                            {% include "components/ui/icon.html" with name="map-pin" size="sm" class="text-primary shrink-0" %}
+                            {{ profile.location }}
+                        </li>
+                        {% endif %}
+                        {% if profile.email %}
+                        <li class="flex items-center gap-3">
+                            {% include "components/ui/icon.html" with name="mail" size="sm" class="text-primary shrink-0" %}
+                            <a href="mailto:{{ profile.email }}" class="hover:text-primary transition-colors">{{ profile.email }}</a>
+                        </li>
+                        {% endif %}
+                        {% if profile.phone %}
+                        <li class="flex items-center gap-3">
+                            {% include "components/ui/icon.html" with name="phone" size="sm" class="text-primary shrink-0" %}
+                            {{ profile.phone }}
+                        </li>
+                        {% endif %}
+                        {% if not profile.location and not profile.email and not profile.phone %}
+                        <li>{% trans "Add location, email, and phone in your profile to show them here." %}</li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="section-container">
+        {% trans "Years Experience" as label_years %}
+        {% trans "Projects Delivered" as label_projects %}
+        {% trans "APIs Shipped" as label_apis %}
+        {% trans "Client Focus" as label_focus %}
+
+        <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
+            {% include "components/ui/stat_card.html" with value="5+" label=label_years delay="1" %}
+            {% include "components/ui/stat_card.html" with value="30+" label=label_projects delay="2" %}
+            {% include "components/ui/stat_card.html" with value="12+" label=label_apis delay="3" %}
+            {% include "components/ui/stat_card.html" with value="100%" label=label_focus delay="4" %}
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="section-container">
+        <div class="section-header section-header--center" data-reveal>
+            <p class="text-eyebrow">{% trans "Capabilities" %}</p>
+            <h2 class="section-title text-balance">{% trans "Skills & Tools" %}</h2>
+            <p class="section-subtitle">
+                {% trans "Technologies I use to design, build, and ship reliable software." %}
+            </p>
+        </div>
+
+        <div class="mt-12 flex flex-wrap justify-center gap-3" data-reveal data-delay="2">
+            {% if skills %}
+                {% for skill in skills %}
+                    {% include "components/ui/skill_tag.html" with text=skill.name %}
+                {% endfor %}
+            {% else %}
+                {% include "components/ui/skill_tag.html" with text="Python" %}
+                {% include "components/ui/skill_tag.html" with text="Django" %}
+                {% include "components/ui/skill_tag.html" with text="Django REST Framework" %}
+                {% include "components/ui/skill_tag.html" with text="HTMX" %}
+                {% include "components/ui/skill_tag.html" with text="Tailwind CSS" %}
+                {% include "components/ui/skill_tag.html" with text="PostgreSQL" %}
+                {% include "components/ui/skill_tag.html" with text="Redis" %}
+                {% include "components/ui/skill_tag.html" with text="Docker" %}
+                {% include "components/ui/skill_tag.html" with text="Linux" %}
+                {% include "components/ui/skill_tag.html" with text="Git" %}
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="section-container">
+        <div class="section-header section-header--center" data-reveal>
+            <p class="text-eyebrow">{% trans "Career" %}</p>
+            <h2 class="section-title text-balance">{% trans "Experience Snapshot" %}</h2>
+            <p class="section-subtitle">
+                {% trans "A condensed look at recent roles. Full timeline lives on the home page." %}
+            </p>
+        </div>
+
+        <div class="mx-auto mt-12 max-w-3xl space-y-5">
+            {% if experiences %}
+                {% for exp in experiences %}
+                <article class="timeline-card hover-lift" data-reveal data-delay="{{ forloop.counter }}">
+                    <p class="timeline-card__date mb-3">
+                        {{ exp.start_date|date:"M Y" }}
+                        —
+                        {% if exp.currently_working %}
+                            {% trans "Present" %}
+                        {% elif exp.end_date %}
+                            {{ exp.end_date|date:"M Y" }}
+                        {% endif %}
+                    </p>
+                    <h3 class="text-h3">{{ exp.position }}</h3>
+                    <p class="mt-1 text-sm font-medium text-primary/80">{{ exp.company }}</p>
+                    <p class="mt-4 text-muted text-body">{{ exp.description }}</p>
+                </article>
+                {% endfor %}
+            {% else %}
+                {% trans "Building scalable Django applications, REST APIs, and modern backend architectures with a focus on performance and maintainability." as exp1_desc %}
+                {% trans "Developed APIs, optimized databases, integrated third-party services, and collaborated with frontend developers on production applications." as exp2_desc %}
+                {% include "components/ui/timeline_card.html" with date="2026 — Present" title="Senior Backend Developer" company="Independent" description=exp1_desc delay="1" %}
+                {% include "components/ui/timeline_card.html" with date="2024 — 2026" title="Backend Developer" company="Product Team" description=exp2_desc delay="2" %}
+            {% endif %}
+        </div>
+
+        <div class="mt-12 text-center" data-reveal>
+            <a href="{% url 'home' %}#experience" class="btn btn-glass btn-ripple">
+                {% trans "View Full Timeline" %}
+                {% include "components/ui/icon.html" with name="arrow-right" size="sm" %}
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
