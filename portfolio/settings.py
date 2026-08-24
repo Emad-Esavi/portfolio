@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
+    "rest_framework",
     "tailwind",
     "theme",
     "django_browser_reload",
@@ -190,3 +191,32 @@ CELERY_TASK_SOFT_TIME_LIMIT = 45
 CELERY_ACCEPT_CONTENT = ["json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
+
+
+# Blog automation API (n8n). Fail closed if unset — every /api/ request gets 401.
+BLOG_API_KEY = os.environ.get("BLOG_API_KEY", "")
+
+REST_FRAMEWORK = {
+    "DEFAULT_RENDERER_CLASSES": [
+        "rest_framework.renderers.JSONRenderer",
+    ],
+    "DEFAULT_PARSER_CLASSES": [
+        "rest_framework.parsers.JSONParser",
+    ],
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "blog.api.authentication.BlogAPIKeyAuthentication",
+    ],
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+    "DEFAULT_THROTTLE_CLASSES": [
+        "rest_framework.throttling.AnonRateThrottle",
+        "blog.api.throttling.BlogAPIWriteThrottle",
+        "blog.api.throttling.BlogAPIReadThrottle",
+    ],
+    "DEFAULT_THROTTLE_RATES": {
+        "anon": "10/min",
+        "blog_api_write": "30/min",
+        "blog_api_read": "60/min",
+    },
+}

@@ -20,6 +20,7 @@ sitemaps = {
 
 urlpatterns = [
     path("i18n/", include("django.conf.urls.i18n")),
+    path("api/", include("blog.api.urls")),
     path(
         "robots.txt",
         TemplateView.as_view(
