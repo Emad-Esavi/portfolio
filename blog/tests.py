@@ -102,6 +102,28 @@ class BlogAPICrudTests(TestCase):
         self.assertEqual(response.status_code, 201)
         self.assertEqual(response.data["slug"], "hello-world-2")
 
+    def test_long_title_slug_is_at_most_50_characters(self):
+        title = (
+            "Support the Future of Django: The 2026 PyCharm Fall Fundraiser"
+        )
+        response = self.client.post(
+            self.list_url,
+            {"title": title, "content": "body"},
+            format="json",
+        )
+        self.assertEqual(response.status_code, 201, response.data)
+        self.assertLessEqual(len(response.data["slug"]), 50)
+        self.assertTrue(response.data["slug"].startswith("support-the-future"))
+
+        collision = self.client.post(
+            self.list_url,
+            {"title": title, "content": "another body"},
+            format="json",
+        )
+        self.assertEqual(collision.status_code, 201, collision.data)
+        self.assertLessEqual(len(collision.data["slug"]), 50)
+        self.assertNotEqual(collision.data["slug"], response.data["slug"])
+
     def test_reject_non_http_featured_image_url(self):
         for bad_url in (
             "javascript:alert(1)",
