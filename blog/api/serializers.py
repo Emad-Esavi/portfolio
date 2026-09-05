@@ -1,3 +1,4 @@
+import json
 import re
 
 from django.core.validators import URLValidator
@@ -69,6 +70,10 @@ class PostSerializer(serializers.ModelSerializer):
         allow_empty=True,
         write_only=True,
     )
+    featured_image = serializers.ImageField(
+        required=False,
+        allow_null=True,
+    )
     featured_image_url = serializers.CharField(
         required=False,
         allow_blank=True,
@@ -99,6 +104,7 @@ class PostSerializer(serializers.ModelSerializer):
             "excerpt_fa",
             "content",
             "content_fa",
+            "featured_image",
             "featured_image_url",
             "featured_image_alt",
             "featured_image_alt_fa",
@@ -136,6 +142,34 @@ class PostSerializer(serializers.ModelSerializer):
 
     def get_url(self, obj):
         return obj.get_absolute_url()
+
+    def to_internal_value(self, data):
+        if hasattr(data, "copy"):
+            data = data.copy()
+        tags = data.get("tags")
+        if isinstance(tags, str):
+            raw = tags.strip()
+            if not raw:
+                parsed = []
+            elif raw.startswith("["):
+                try:
+                    parsed = json.loads(raw)
+                except json.JSONDecodeError as exc:
+                    raise serializers.ValidationError(
+                        {"tags": "Enter a JSON array of tag names."}
+                    ) from exc
+                if not isinstance(parsed, list):
+                    raise serializers.ValidationError(
+                        {"tags": "Enter a JSON array of tag names."}
+                    )
+            else:
+                parsed = [part.strip() for part in raw.split(",") if part.strip()]
+            parsed = [str(item) for item in parsed]
+            if hasattr(data, "setlist"):
+                data.setlist("tags", parsed)
+            else:
+                data["tags"] = parsed
+        return super().to_internal_value(data)
 
     def validate_featured_image_url(self, value):
         if value in (None, ""):
