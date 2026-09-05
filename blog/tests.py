@@ -1,8 +1,19 @@
+import tempfile
+from io import BytesIO
+
+from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase, override_settings
 from django.urls import reverse
+from PIL import Image
 from rest_framework.test import APIClient
 
 from blog.models import Category, Post, Tag
+
+
+def tiny_png(name="cover.png"):
+    buffer = BytesIO()
+    Image.new("RGB", (8, 8), (20, 80, 160)).save(buffer, format="PNG")
+    return SimpleUploadedFile(name, buffer.getvalue(), content_type="image/png")
 
 
 API_KEY = "test-blog-api-key-not-for-production"
@@ -108,6 +119,51 @@ class BlogAPICrudTests(TestCase):
             )
             self.assertEqual(response.status_code, 400, bad_url)
             self.assertIn("featured_image_url", response.data)
+
+    def test_create_post_with_uploaded_featured_image(self):
+        with tempfile.TemporaryDirectory() as media_root:
+            with override_settings(MEDIA_ROOT=media_root):
+                response = self.client.post(
+                    self.list_url,
+                    {
+                        "title": "Post with uploaded cover",
+                        "content": "Markdown body.",
+                        "featured_image": tiny_png(),
+                        "featured_image_alt": "Blue square cover",
+                        "category": "django",
+                        "tags": '["python", "n8n"]',
+                    },
+                    format="multipart",
+                )
+                self.assertEqual(response.status_code, 201, response.data)
+                self.assertTrue(response.data["featured_image"])
+                self.assertTrue(response.data["image_url"])
+                self.assertIn("/media/blog/", response.data["image_url"])
+
+                post = Post.objects.get(slug="post-with-uploaded-cover")
+                self.assertTrue(post.featured_image)
+                self.assertEqual(post.image_url, post.featured_image.url)
+                self.assertEqual(
+                    set(post.tags.values_list("name", flat=True)),
+                    {"python", "n8n"},
+                )
+
+    def test_reject_invalid_featured_image_upload(self):
+        response = self.client.post(
+            self.list_url,
+            {
+                "title": "Bad upload",
+                "content": "body",
+                "featured_image": SimpleUploadedFile(
+                    "cover.txt",
+                    b"not-an-image",
+                    content_type="text/plain",
+                ),
+            },
+            format="multipart",
+        )
+        self.assertEqual(response.status_code, 400)
+        self.assertIn("featured_image", response.data)
 
     def test_category_and_tag_normalization(self):
         response = self.client.post(
