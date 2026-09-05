@@ -44,15 +44,27 @@ def get_or_create_tag(name: str) -> Tag:
     return tag
 
 
+SLUG_MAX_LENGTH = 50
+
+
+def clip_slug(value: str) -> str:
+    slug = slugify(value) or "post"
+    slug = slug[:SLUG_MAX_LENGTH].rstrip("-")
+    return slug or "post"
+
+
 def unique_slug_from_title(title: str, exclude_pk=None) -> str:
-    base = slugify(title) or "post"
+    base = clip_slug(title)
     slug = base
     counter = 2
     qs = Post.objects.all()
     if exclude_pk is not None:
         qs = qs.exclude(pk=exclude_pk)
     while qs.filter(slug=slug).exists():
-        slug = f"{base}-{counter}"
+        suffix = f"-{counter}"
+        slug = f"{base[: SLUG_MAX_LENGTH - len(suffix)]}{suffix}".rstrip("-")
+        if not slug:
+            slug = f"post{suffix}"[:SLUG_MAX_LENGTH]
         counter += 1
     return slug
 
@@ -134,7 +146,7 @@ class PostSerializer(serializers.ModelSerializer):
             "updated_at",
         ]
         extra_kwargs = {
-            "slug": {"required": False, "allow_blank": True},
+            "slug": {"required": False, "allow_blank": True, "max_length": 50},
             "title": {"required": True},
             "content": {"required": True},
             "status": {"required": False},
@@ -228,6 +240,10 @@ class PostSerializer(serializers.ModelSerializer):
         if not validated_data.get("slug"):
             validated_data["slug"] = unique_slug_from_title(
                 validated_data.get("title", "")
+            )
+        else:
+            validated_data["slug"] = unique_slug_from_title(
+                validated_data["slug"]
             )
 
         if category_name is not serializers.empty:
